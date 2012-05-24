@@ -17,7 +17,7 @@
 #define ADC_PORT_MISO	XS1_PORT_1G
 #define ADC_PORT_MOSI	XS1_PORT_1I
 
-#define CHANNEL_GYRO_Z	0 //Correct, others are dummy for now
+#define CHANNEL_GYRO_Z	0
 #define CHANNEL_GYRO_Y	1
 #define CHANNEL_GYRO_X	2
 
