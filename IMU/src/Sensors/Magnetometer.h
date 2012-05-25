@@ -13,7 +13,17 @@
 #ifndef MAGNETOMETER_H_
 #define MAGNETOMETER_H_
 
+/**
+ * Read the magnetometer registers for the most recent heading data
+ * @param values the array for the values to be stored in
+ * @param i2c the i2c lines the magnetometer is on
+ */
 void readMagnetometer(short values[], REFERENCE_PARAM(struct r_i2c,i2c));
+
+/**
+ * Initialize the I2C prots, as well as the magnetometer
+ * @param the i2c ports
+ */
 void initMagnetometer(REFERENCE_PARAM(struct r_i2c,i2c));
 
 #define ADDRESS_7 		0x1E

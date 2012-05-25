@@ -13,6 +13,10 @@
 
 unsigned char data[6], singleData[1];
 
+/**
+ * Initialize the I2C prots, as well as the magnetometer
+ * @param the i2c ports
+ */
 void initMagnetometer(REFERENCE_PARAM(struct r_i2c,i2c)) {
 	unsigned char data[1];
 	i2c_master_init(i2c);
@@ -20,6 +24,11 @@ void initMagnetometer(REFERENCE_PARAM(struct r_i2c,i2c)) {
 	i2c_master_write_reg(ADDRESS_8_WRITE, ADDRESS_MODE, data, 1, i2c);
 }
 
+/**
+ * Read the magnetometer registers for the most recent heading data
+ * @param values the array for the values to be stored in
+ * @param i2c the i2c lines the magnetometer is on
+ */
 void readMagnetometer(short values[], REFERENCE_PARAM(struct r_i2c,i2c)) {
 
 	i2c_master_read_reg(ADDRESS_7, 0x03, singleData, 1, i2c);
