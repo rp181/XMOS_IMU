@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$_magnetometer_8h.html" title="IMU/src/Sensors/Magnetometer.h" alt="" coords="5,80,221,107"/>
+<area shape="rect" id="node7" href="$_magnetometer_8xc.html" title="IMU/src/Sensors/Magnetometer.xc" alt="" coords="148,155,372,181"/>
+<area shape="rect" id="node9" href="$i2c_8xc.html" title="IMU/src/Libs/I2C/i2c.xc" alt="" coords="297,80,455,107"/>
+<area shape="rect" id="node5" href="$_i_m_u_8xc.html" title="IMU/src/IMU.xc" alt="" coords="12,155,124,181"/>
+</map>

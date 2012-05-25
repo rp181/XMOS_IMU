@@ -1,0 +1,9 @@
+<map id="G" name="G">
+<area shape="rect" id="node9" href="$_i_m_u_8h.html" title="IMU.h" alt="" coords="212,80,268,107"/>
+<area shape="rect" id="node11" href="$_a_d_c_8h.html" title="Sensors/ADC.h" alt="" coords="292,80,404,107"/>
+<area shape="rect" id="node13" href="$uart__rx_8h.html" title="UART/RX/uart_rx.h" alt="" coords="435,155,565,181"/>
+<area shape="rect" id="node15" href="$uart__rx__impl_8h.html" title="UART/RX/uart_rx_impl.h" alt="" coords="479,80,641,107"/>
+<area shape="rect" id="node18" href="$_g_p_s_8h.html" title="Sensors/GPS.h" alt="" coords="666,80,779,107"/>
+<area shape="rect" id="node20" href="$_magnetometer_8h.html" title="Sensors/Magnetometer.h" alt="" coords="804,80,972,107"/>
+<area shape="rect" id="node22" href="$i2c_8h.html" title="../Libs/I2C/i2c.h" alt="" coords="739,155,852,181"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$_i_m_u_8xc.html" title="IMU/src/IMU.xc" alt="" coords="5,80,117,107"/>
+<area shape="rect" id="node5" href="$uart__rx_8xc.html" title="IMU/src/Libs/UART/RX/uart_rx.xc" alt="" coords="142,80,356,107"/>
+<area shape="rect" id="node7" href="$uart__rx__impl_8xc.html" title="IMU/src/Libs/UART/RX/uart_rx_impl.xc" alt="" coords="381,80,627,107"/>
+<area shape="rect" id="node9" href="$_g_p_s_8xc.html" title="IMU/src/Sensors/GPS.xc" alt="" coords="651,80,820,107"/>
+</map>

@@ -1,0 +1,25 @@
+var files =
+[
+    [ "IMU/src/IMU.h", "_i_m_u_8h.html", "_i_m_u_8h" ],
+    [ "IMU/src/IMU.xc", "_i_m_u_8xc.html", "_i_m_u_8xc" ],
+    [ "IMU/src/Libs/I2C/i2c.h", "i2c_8h.html", "i2c_8h" ],
+    [ "IMU/src/Libs/I2C/i2c.xc", "i2c_8xc.html", "i2c_8xc" ],
+    [ "IMU/src/Libs/SPI/spi_master.h", "spi__master_8h.html", "spi__master_8h" ],
+    [ "IMU/src/Libs/SPI/spi_master.xc", "spi__master_8xc.html", "spi__master_8xc" ],
+    [ "IMU/src/Libs/SPI/spi_slave.h", "spi__slave_8h.html", "spi__slave_8h" ],
+    [ "IMU/src/Libs/SPI/spi_slave.xc", "spi__slave_8xc.html", "spi__slave_8xc" ],
+    [ "IMU/src/Libs/UART/RX/uart_rx.h", "uart__rx_8h.html", "uart__rx_8h" ],
+    [ "IMU/src/Libs/UART/RX/uart_rx.xc", "uart__rx_8xc.html", "uart__rx_8xc" ],
+    [ "IMU/src/Libs/UART/RX/uart_rx_impl.h", "uart__rx__impl_8h.html", "uart__rx__impl_8h" ],
+    [ "IMU/src/Libs/UART/RX/uart_rx_impl.xc", "uart__rx__impl_8xc.html", "uart__rx__impl_8xc" ],
+    [ "IMU/src/Libs/UART/TX/uart_tx.h", "uart__tx_8h.html", "uart__tx_8h" ],
+    [ "IMU/src/Libs/UART/TX/uart_tx.xc", "uart__tx_8xc.html", "uart__tx_8xc" ],
+    [ "IMU/src/Libs/UART/TX/uart_tx_impl.h", "uart__tx__impl_8h.html", "uart__tx__impl_8h" ],
+    [ "IMU/src/Libs/UART/TX/uart_tx_impl.xc", "uart__tx__impl_8xc.html", "uart__tx__impl_8xc" ],
+    [ "IMU/src/Sensors/ADC.h", "_a_d_c_8h.html", "_a_d_c_8h" ],
+    [ "IMU/src/Sensors/ADC.xc", "_a_d_c_8xc.html", "_a_d_c_8xc" ],
+    [ "IMU/src/Sensors/GPS.h", "_g_p_s_8h.html", "_g_p_s_8h" ],
+    [ "IMU/src/Sensors/GPS.xc", "_g_p_s_8xc.html", "_g_p_s_8xc" ],
+    [ "IMU/src/Sensors/Magnetometer.h", "_magnetometer_8h.html", null ],
+    [ "IMU/src/Sensors/Magnetometer.xc", "_magnetometer_8xc.html", "_magnetometer_8xc" ]
+];
