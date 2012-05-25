@@ -58,6 +58,7 @@ void readGPS(chanend uartRX, chanend gps, unsigned baud_rate);
 #define REQUEST_ALTITUDE_I 16
 #define REQUEST_ALTITUDE_F 17
 
+//Should always be last
 #define REQUEST_ALL 18
 
 #endif /* GPS_H_ */

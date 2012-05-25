@@ -9,7 +9,7 @@
  */
 
 /**
- * !!!he GPS data will not update if requests are made too often!!!
+ * !!!The GPS data will not update if requests are made too often!!!
  */
 #include <xs1.h>
 #include <platform.h>

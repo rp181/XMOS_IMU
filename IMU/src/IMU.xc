@@ -45,8 +45,7 @@ int main() {
 			uart_rx(rx, rx_buffer, ARRAY_SIZE(rx_buffer), baud_rate, BITS_PER_BYTE, SET_PARITY, STOP_BIT, chanRX);
 		}on stdcore[0] :
 		readGPS(chanRX, chanGPS, baud_rate);
-		on stdcore[0] :
-		testGPS(chanGPS);
+		on stdcore[0] : testGPS(chanGPS);
 		on stdcore[0] : testADC();
 	}
 }
@@ -63,7 +62,7 @@ void testGPS(chanend gps) {
 			}
 		}
 
-		printf("(%i:%i:%i.%i)\tOP:%i  Fix:%i  Num Sats:%i  %i%c%i.%i, %i%c%i.%i   %i.%im   Date: %i\\%i\\%i\n",
+		printf("(%i:%i:%i.%i) :   OP:%i  Fix:%i  Num Sats:%i  %i%c%i.%i, %i%c%i.%i   %i.%im   Date: %i\\%i\\%i\n",
 				GPSData[REQUEST_UTC_H],GPSData[REQUEST_UTC_M],GPSData[REQUEST_UTC_S],
 				GPSData[REQUEST_UTC_DS], GPSData[REQUEST_OPERATION_MODE],
 				GPSData[REQUEST_FIX_STATUS], GPSData[REQUEST_SATELLITES_USED],
