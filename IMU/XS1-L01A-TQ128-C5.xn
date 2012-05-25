@@ -13,13 +13,22 @@
 			<Nodes>
 				<Node Id="0" InPackageId="0" Type="XS1-L1A" SystemFrequency="500MHz">
 					<Core Number="0" Reference="stdcore[0]">
-						<!-- ADC 0 Ports -->
+						<!-- ADC Ports -->
 						<Port Location="XS1_PORT_1J" Name="PORT_ADC_CS" />
 						<Port Location="XS1_PORT_1I" Name="PORT_ADC_MOSI" />
 						<Port Location="XS1_PORT_1G" Name="PORT_ADC_MISO" />
 						<Port Location="XS1_PORT_1H" Name="PORT_ADC_SCLK" />
-						
-						<Port Location="XS1_PORT_1A" Name="PORT_GPS_RX" />
+						<!-- GPS Ports -->
+						<Port Location="XS1_PORT_1E" Name="PORT_GPS_RX" />
+						<Port Location="XS1_PORT_1F" Name="PORT_GPS_TX" />
+						<!-- Magnetometer Ports -->
+						<Port Location="XS1_PORT_1K" Name="PORT_MAG_SCL" />
+						<Port Location="XS1_PORT_1L" Name="PORT_MAG_SDA" />
+						<!-- Comm Ports -->
+						<Port Location="XS1_PORT_1M" Name="PORT_COM0" />
+						<Port Location="XS1_PORT_1N" Name="PORT_COM1" />
+						<Port Location="XS1_PORT_1O" Name="PORT_COM2" />
+						<Port Location="XS1_PORT_1P" Name="PORT_COM3" />
 					</Core>
 				</Node>
 			</Nodes>
