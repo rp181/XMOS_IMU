@@ -16,6 +16,7 @@
 #include "UART/RX/uart_rx.h"
 #include "UART/RX/uart_rx_impl.h"
 #include "Sensors/GPS.h"
+#include "Sensors/Magnetometer.h"
 
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof(a[0]))
 
@@ -31,10 +32,18 @@ unsigned baud_rate = BIT_RATE;
  * Channels'respective data is define in the header file
  */
 ADC adc = { PORT_ADC_CS, PORT_ADC_MOSI, PORT_ADC_MISO, PORT_ADC_SCLK, XS1_CLKBLK_1, XS1_CLKBLK_2 };
+/**
+ * RX from the GPS Module
+ */
 buffered in port:1 rx = PORT_GPS_RX;
+/**
+ * I2C Ports for the Magnetometer
+ */
+struct r_i2c magnetometer = { PORT_MAG_SCL, PORT_MAG_SDA };
 
 void testADC();
 void testGPS(chanend gps);
+void testMagnetometer();
 
 int main() {
 	chan chanRX, chanGPS;
@@ -47,6 +56,17 @@ int main() {
 		readGPS(chanRX, chanGPS, baud_rate);
 		on stdcore[0] : testGPS(chanGPS);
 		on stdcore[0] : testADC();
+		on stdcore[0] : testMagnetometer();
+	}
+}
+
+void testMagnetometer(){
+	short values[3];
+
+	initMagnetometer(magnetometer);
+	while(1){
+		readMagnetometer(values, magnetometer);
+		printf("Magnetometer: %i\t%i\t%i\n", values[0], values[1], values[2]);
 	}
 }
 
@@ -62,7 +82,7 @@ void testGPS(chanend gps) {
 			}
 		}
 
-		printf("(%i:%i:%i.%i) :   OP:%i  Fix:%i  Num Sats:%i  %i%c%i.%i, %i%c%i.%i   %i.%im   Date: %i\\%i\\%i\n",
+		printf("GPS: (%i:%i:%i.%i) :   OP:%i  Fix:%i  Num Sats:%i  %i%c%i.%i, %i%c%i.%i   %i.%im   Date: %i\\%i\\%i\n",
 				GPSData[REQUEST_UTC_H],GPSData[REQUEST_UTC_M],GPSData[REQUEST_UTC_S],
 				GPSData[REQUEST_UTC_DS], GPSData[REQUEST_OPERATION_MODE],
 				GPSData[REQUEST_FIX_STATUS], GPSData[REQUEST_SATELLITES_USED],
@@ -84,6 +104,6 @@ void testADC() {
 	configureADC(adc);
 	while (1) {
 		updateADCValues(adc);
-		printf("%i\t%i\t%i\t%i\t%i\t%i\t%i\t%i\n", adc.adcValues[0], adc.adcValues[1], adc.adcValues[2], adc.adcValues[3], adc.adcValues[4], adc.adcValues[5], adc.adcValues[6], adc.adcValues[7]);
+		printf("ADC: %i\t%i\t%i\t%i\t%i\t%i\t%i\t%i\n", adc.adcValues[0], adc.adcValues[1], adc.adcValues[2], adc.adcValues[3], adc.adcValues[4], adc.adcValues[5], adc.adcValues[6], adc.adcValues[7]);
 	}
 }
