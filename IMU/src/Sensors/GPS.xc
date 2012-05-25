@@ -54,7 +54,7 @@ short handleRequest(unsigned short request);
 /**
  * Most up-to-date GPS data
  */
-short GPSData[18];
+short GPSData[GPS_DATA_SIZE];
 
 /**
  * Starts the thread to read the GPS data, as well as handle data requests.
@@ -80,8 +80,17 @@ void readGPS(chanend uartRX, chanend gps, unsigned baud_rate) {
 		bufferLength = 0;
 		do {
 			select {
-case				gps :> request:
-				gps <: handleRequest(request);
+				case gps :> request:
+					if(request != REQUEST_ALL){
+						gps <: handleRequest(request);
+					}
+					else{
+						master {
+							for(int i = 0; i < GPS_DATA_SIZE; i++){
+								gps <: GPSData[i];
+							}
+						}
+					}
 				break;
 				default:
 				uart_rx_get_byte_byref(uartRX, rxState, byte);

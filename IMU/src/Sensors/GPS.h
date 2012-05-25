@@ -21,6 +21,8 @@
  */
 void readGPS(chanend uartRX, chanend gps, unsigned baud_rate);
 
+#define GPS_DATA_SIZE 18
+
 #define OPERATION_NOFIX 1
 #define OPERATION_2D 2
 #define OPERATION_3D 3
@@ -55,5 +57,7 @@ void readGPS(chanend uartRX, chanend gps, unsigned baud_rate);
 
 #define REQUEST_ALTITUDE_I 16
 #define REQUEST_ALTITUDE_F 17
+
+#define REQUEST_ALL 18
 
 #endif /* GPS_H_ */

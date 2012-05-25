@@ -52,57 +52,26 @@ int main() {
 }
 
 void testGPS(chanend gps) {
-	short latd, latm, latdm, lond, lonm, londm;
-	short day, month, year;
-	short operationMode, fixStatus, satellitesUsed;
-	short utch, utcm, utcs, utcds;
-	short altitudeI, altitudeF;
+	short GPSData[GPS_DATA_SIZE];
 	timer t;
 	long time;
 	while (1) {
-gps		<: ((unsigned char) REQUEST_LATITUDE_D);
-		gps :> latd;
-		gps <: ((unsigned char) REQUEST_LATITUDE_M);
-		gps :> latm;
-		gps <: ((unsigned char) REQUEST_LATITUDE_DM);
-		gps :> latdm;
+		gps	<: ((unsigned char) REQUEST_ALL);
+		slave{
+			for(int i = 0; i < GPS_DATA_SIZE; i++){
+				gps :> GPSData[i];
+			}
+		}
 
-		gps <: ((unsigned char) REQUEST_LONGITUDE_D);
-		gps :> lond;
-		gps <: ((unsigned char) REQUEST_LONGITUDE_M);
-		gps :> lonm;
-		gps <: ((unsigned char) REQUEST_LONGITUDE_DM);
-		gps :> londm;
-
-		gps <: ((unsigned char) REQUEST_DAY);
-		gps :> day;
-		gps <: ((unsigned char) REQUEST_MONTH);
-		gps :> month;
-		gps <: ((unsigned char) REQUEST_YEAR);
-		gps :> year;
-
-		gps <: ((unsigned char) REQUEST_UTC_H);
-		gps :> utch;
-		gps <: ((unsigned char) REQUEST_UTC_M);
-		gps :> utcm;
-		gps <: ((unsigned char) REQUEST_UTC_S);
-		gps :> utcs;
-		gps <: ((unsigned char) REQUEST_UTC_DS);
-		gps :> utcds;
-
-		gps <: ((unsigned char) REQUEST_OPERATION_MODE);
-		gps :> operationMode;
-		gps <: ((unsigned char) REQUEST_FIX_STATUS);
-		gps :> fixStatus;
-		gps <: ((unsigned char) REQUEST_SATELLITES_USED);
-		gps :> satellitesUsed;
-
-		gps <: ((unsigned char) REQUEST_ALTITUDE_I);
-		gps :> altitudeI;
-		gps <: ((unsigned char) REQUEST_ALTITUDE_F);
-		gps :> altitudeF;
-
-		printf("(%i:%i:%i.%i)\tOP:%i  Fix:%i  Num Sats:%i  %i%c%i.%i, %i%c%i.%i   %i.%im   Date: %i\\%i\\%i\n",utch,utcm,utcs,utcds, operationMode, fixStatus, satellitesUsed, latd, ((char) 176), latm, latdm, lond, ((char) 176), lonm, londm, altitudeI, altitudeF,month, day, year);
+		printf("(%i:%i:%i.%i)\tOP:%i  Fix:%i  Num Sats:%i  %i%c%i.%i, %i%c%i.%i   %i.%im   Date: %i\\%i\\%i\n",
+				GPSData[REQUEST_UTC_H],GPSData[REQUEST_UTC_M],GPSData[REQUEST_UTC_S],
+				GPSData[REQUEST_UTC_DS], GPSData[REQUEST_OPERATION_MODE],
+				GPSData[REQUEST_FIX_STATUS], GPSData[REQUEST_SATELLITES_USED],
+				GPSData[REQUEST_LATITUDE_D], ((char) 176), GPSData[REQUEST_LATITUDE_M],
+				GPSData[REQUEST_LATITUDE_DM], GPSData[REQUEST_LONGITUDE_D],
+				((char) 176), GPSData[REQUEST_LONGITUDE_M], GPSData[REQUEST_LONGITUDE_DM],
+				GPSData[REQUEST_ALTITUDE_I], GPSData[REQUEST_ALTITUDE_F],
+				GPSData[REQUEST_MONTH], GPSData[REQUEST_DAY], GPSData[REQUEST_YEAR]);
 
 		t :> time;
 		time += 50000000;
