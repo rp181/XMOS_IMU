@@ -23,4 +23,6 @@
 #define CHANNEL_ACEL_X	4
 #define CHANNEL_ACEL_Y	5
 
+#define UART_BUFFER 1
+
 #endif /* IMU_H_ */

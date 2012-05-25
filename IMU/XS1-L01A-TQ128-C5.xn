@@ -18,6 +18,8 @@
 						<Port Location="XS1_PORT_1I" Name="PORT_ADC_MOSI" />
 						<Port Location="XS1_PORT_1G" Name="PORT_ADC_MISO" />
 						<Port Location="XS1_PORT_1H" Name="PORT_ADC_SCLK" />
+						
+						<Port Location="XS1_PORT_1A" Name="PORT_GPS_RX" />
 					</Core>
 				</Node>
 			</Nodes>
