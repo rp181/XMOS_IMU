@@ -1,27 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Network xmlns="http://www.xmos.com"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://www.xmos.com http://www.xmos.com">
-  <Type>Device</Type>
-  <Name>XS1-L01A-TQ128-C5 Device</Name>
+<Network xmlns="http://www.xmos.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.xmos.com http://www.xmos.com">
+	<Type>Device</Type>
+	<Name>XS1-L01A-TQ128-C5 Device</Name>
 
-  <Declarations>
-    <Declaration>core stdcore[1]</Declaration>
-  </Declarations>
+	<Declarations>
+		<Declaration>core stdcore[1]</Declaration>
+	</Declarations>
 
-  <Packages>
-    <Package id="0" Type="XS1-L1A-TQ128">
-      <Nodes>
-        <Node Id="0" InPackageId="0" Type="XS1-L1A" SystemFrequency="500MHz">
-          <Core Number="0" Reference="stdcore[0]"/>
-        </Node>
-      </Nodes>
-    </Package>
-  </Packages>
+	<Packages>
+		<Package id="0" Type="XS1-L1A-TQ128">
+			<Nodes>
+				<Node Id="0" InPackageId="0" Type="XS1-L1A" SystemFrequency="500MHz">
+					<Core Number="0" Reference="stdcore[0]">
+						<!-- ADC 0 Ports -->
+						<Port Location="XS1_PORT_1J" Name="PORT_ADC_CS" />
+						<Port Location="XS1_PORT_1I" Name="PORT_ADC_MOSI" />
+						<Port Location="XS1_PORT_1G" Name="PORT_ADC_MISO" />
+						<Port Location="XS1_PORT_1H" Name="PORT_ADC_SCLK" />
+					</Core>
+				</Node>
+			</Nodes>
+		</Package>
+	</Packages>
 
-  <JTAGChain>
-     <JTAGDevice NodeId="0"/>
-  </JTAGChain>
+	<JTAGChain>
+		<JTAGDevice NodeId="0" />
+	</JTAGChain>
 
 </Network>
 

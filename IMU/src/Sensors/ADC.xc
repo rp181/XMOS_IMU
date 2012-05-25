@@ -22,6 +22,8 @@ void updateADCValues(ADC &adc) {
 	unsigned short data1,data2;
 	unsigned char address1, address2;
 
+	//Read 4 sets of 2 packets of data (all 8 channels)
+	//Each packet of data has the address and data
 	for(int i = 0; i < 4; i++) {
 		//Read a packet of data, for channel n
 		adc.CS <: 0;
@@ -45,18 +47,22 @@ void updateADCValues(ADC &adc) {
 
 		compositeData = ((int)bitrev(compositeData));
 
+		//Split the integer into the 2 data sets read
 		data1 = ((unsigned short)((compositeData) >> 16));
 		data2 = ((unsigned short)((compositeData) & 65535));
 
+		//Obtain the read address
 		address1 = (char)((data1 & 57344) >> 13);
 		address2 = (char)((data2 & 57344) >> 13);
 
+		//Obtain the data values
 		adc.adcValues[address1] = ((data1 & 8191) >> 1);
 		adc.adcValues[address2] = ((data2 & 8191) >> 1);
 	}
 }
 
 /**
+ * Configures the ADC pins
  * Bit-bangs configuration data to the ADC:
  * Normal power mode, sequencer 0-7, maximum speed
  * Must be called prior to using the ADCs to ensure proper data return
