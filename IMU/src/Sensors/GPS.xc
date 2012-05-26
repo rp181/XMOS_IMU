@@ -46,12 +46,6 @@ void parseRMC(char buffer[], int length);
 void parseGGA(char buffer[], int length);
 
 /**
- * Returns the requested data
- * @param request the data requested, as defined in the header file
- */
-short handleRequest(unsigned short request);
-
-/**
  * Most up-to-date GPS data
  */
 short GPSData[GPS_DATA_SIZE];
@@ -82,7 +76,7 @@ void readGPS(chanend uartRX, chanend gps, unsigned baud_rate) {
 			select {
 				case gps :> request:
 					if(request != REQUEST_ALL){
-						gps <: handleRequest(request);
+						gps <: GPSData[request];
 					}
 					else{
 						master {
@@ -101,10 +95,6 @@ void readGPS(chanend uartRX, chanend gps, unsigned baud_rate) {
 		}while (byte != '\n');
 		parseNMEAString(buffer, bufferLength);
 	}
-}
-
-short handleRequest(unsigned short request) {
-	return GPSData[request];
 }
 
 /**
