@@ -11,7 +11,7 @@
 	<Packages>
 		<Package id="0" Type="XS1-L1A-TQ128">
 			<Nodes>
-				<Node Id="0" InPackageId="0" Type="XS1-L1A" SystemFrequency="500MHz">
+				<Node Id="0" InPackageId="0" Type="XS1-L1A" Oscillator="20MHz" SystemFrequency="500MHz">
 					<Core Number="0" Reference="stdcore[0]">
 						<!-- ADC Ports -->
 						<Port Location="XS1_PORT_1J" Name="PORT_ADC_CS" />
@@ -19,8 +19,8 @@
 						<Port Location="XS1_PORT_1G" Name="PORT_ADC_MISO" />
 						<Port Location="XS1_PORT_1H" Name="PORT_ADC_SCLK" />
 						<!-- GPS Ports -->
-						<Port Location="XS1_PORT_1E" Name="PORT_GPS_RX" />
-						<Port Location="XS1_PORT_1F" Name="PORT_GPS_TX" />
+						<Port Location="XS1_PORT_1F" Name="PORT_GPS_RX" />
+						<Port Location="XS1_PORT_1E" Name="PORT_GPS_TX" />
 						<!-- Magnetometer Ports -->
 						<Port Location="XS1_PORT_1K" Name="PORT_MAG_SCL" />
 						<Port Location="XS1_PORT_1L" Name="PORT_MAG_SDA" />

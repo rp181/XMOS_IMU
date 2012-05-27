@@ -13,9 +13,13 @@
  */
 #include <xs1.h>
 #include <platform.h>
+#include <stdio.h>
 #include "../Libs/UART/RX/uart_rx.h"
 #include "../Libs/UART/RX/uart_rx_impl.h"
 #include "GPS.h"
+
+#define ARRAY_SIZE(a) (sizeof(a) / sizeof(a[0]))
+#define BUFFER_SIZE 512
 
 /**
  * Determine NMEA String type and offload for parsing
@@ -60,7 +64,7 @@ short GPSData[GPS_DATA_SIZE];
  */
 void readGPS(chanend uartRX, chanend gps, unsigned baud_rate) {
 	unsigned char byte;
-	unsigned char buffer[256];
+	unsigned char buffer[BUFFER_SIZE];
 	unsigned char request;
 	int bufferLength;
 
@@ -74,17 +78,17 @@ void readGPS(chanend uartRX, chanend gps, unsigned baud_rate) {
 		bufferLength = 0;
 		do {
 			select {
-				case gps :> request:
-					if(request != REQUEST_ALL){
-						gps <: GPSData[request];
-					}
-					else{
-						master {
-							for(int i = 0; i < GPS_DATA_SIZE; i++){
-								gps <: GPSData[i];
-							}
+case				gps :> request:
+				if(request != REQUEST_ALL) {
+					gps <: GPSData[request];
+				}
+				else {
+					master {
+						for(int i = 0; i < GPS_DATA_SIZE; i++) {
+							gps <: GPSData[i];
 						}
 					}
+				}
 				break;
 				default:
 				uart_rx_get_byte_byref(uartRX, rxState, byte);
@@ -139,7 +143,7 @@ void parseRMC(char buffer[], int length) {
 		}
 
 		//Find where the date starts
-		for (int i = 0; i < length; i++) {
+		for (int i = 0; i < length && i < (BUFFER_SIZE - 6); i++) {
 			if (buffer[i] == ',') {
 				commaCounter++;
 			}
@@ -193,7 +197,7 @@ void parseGGA(char buffer[], int length) {
 	GPSData[REQUEST_SATELLITES_USED] = (int) (((buffer[45] - '0') * 10) + ((buffer[46] - '0')));
 
 	//Find where the altitude starts
-	for (int i = 0; i < length; i++) {
+	for (int i = 0; i < length && i < (BUFFER_SIZE - 2); i++) {
 		if (buffer[i] == ',') {
 			commaCounter++;
 		}
@@ -207,15 +211,17 @@ void parseGGA(char buffer[], int length) {
 	do {
 		tempAltitude = (tempAltitude * 10) + (buffer[counter] - '0');
 		counter++;
-	} while (buffer[counter] != '.');
-	GPSData[REQUEST_ALTITUDE_I] = tempAltitude;
+	} while (counter < BUFFER_SIZE && buffer[counter] != '.');
+	if (counter != BUFFER_SIZE)
+		GPSData[REQUEST_ALTITUDE_I] = tempAltitude;
 
 	tempAltitude = 0;
 	do {
 		tempAltitude = (tempAltitude * 10) + (buffer[52 + counter] - '0');
 		counter++;
-	} while (buffer[52 + counter] != ',');
-	GPSData[REQUEST_ALTITUDE_F] = tempAltitude;
+	} while (counter < (BUFFER_SIZE - 52) && buffer[52 + counter] != ',');
+	if (counter == BUFFER_SIZE - 52)
+		GPSData[REQUEST_ALTITUDE_F] = tempAltitude;
 }
 
 /**
@@ -235,7 +241,7 @@ void parseNMEAString(char buffer[], int length) {
 	} else if (buffer[3] == 'R' && buffer[4] == 'M' && buffer[5] == 'C' && length > 43) {
 		//Recommended Minimum Specific GNSS Data
 		parseRMC(buffer, length);
-	} else if (buffer[3] == 'G' && buffer[4] == 'G' && buffer[5] == 'A' && length > 46) {
+	} else if (buffer[3] == 'G' && buffer[4] == 'G' && buffer[5] == 'A' && length > 52) {
 		//Global Positioning System Fixed Data
 		parseGGA(buffer, length);
 	}
