@@ -17,6 +17,7 @@
 #include "UART/RX/uart_rx_impl.h"
 #include "Sensors/GPS.h"
 #include "Sensors/Magnetometer.h"
+#include "Sensors/GPS_Funcs.h"
 
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof(a[0]))
 
@@ -52,19 +53,19 @@ int main() {
 		{
 			unsigned char rx_buffer[1];
 			uart_rx(rx, rx_buffer, ARRAY_SIZE(rx_buffer), baud_rate, BITS_PER_BYTE, SET_PARITY, STOP_BIT, chanRX);
-		}
-		on stdcore[0] : readGPS(chanRX, chanGPS, baud_rate);
+		}on stdcore[0] :
+		readGPS(chanRX, chanGPS, baud_rate);
 		on stdcore[0] : testGPS(chanGPS);
 		//on stdcore[0] : testADC();
 		//on stdcore[0] : testMagnetometer();
 	}
 }
 
-void testMagnetometer(){
+void testMagnetometer() {
 	short values[3];
 
 	initMagnetometer(magnetometer);
-	while(1){
+	while (1) {
 		readMagnetometer(values, magnetometer);
 		printf("Magnetometer: %i\t%i\t%i\n", values[0], values[1], values[2]);
 	}
@@ -74,14 +75,35 @@ void testGPS(chanend gps) {
 	short GPSData[GPS_DATA_SIZE];
 	timer t;
 	long time;
+	short lat1[3], lon1[3];
+	short lat2[3], lon2[3];
+
+
 	while (1) {
+
+		lon1[0] = lon2[0];
+		lon1[1] = lon2[1];
+		lon1[2] = lon2[2];
+		lat1[0] = lat2[0];
+		lat1[1] = lat2[1];
+		lat1[2] = lat2[2];
+
 		gps	<: ((unsigned char) REQUEST_ALL);
-		slave{
-			for(int i = 0; i < GPS_DATA_SIZE; i++){
+		slave {
+			for(int i = 0; i < GPS_DATA_SIZE; i++) {
 				gps :> GPSData[i];
 			}
 		}
-		printf("GPS: (%i:%i:%i.%i) :   OP:%i  Fix:%i  Num Sats:%i  %i%c%i.%i, %i%c%i.%i   %i.%im   Date: %i\\%i\\%i\n",
+
+		lat2[0] = GPSData[REQUEST_LATITUDE_D];
+		lat2[1] = GPSData[REQUEST_LATITUDE_M];
+		lat2[2] = GPSData[REQUEST_LATITUDE_DM];
+
+		lon2[0] = GPSData[REQUEST_LONGITUDE_D];
+		lon2[1] = GPSData[REQUEST_LONGITUDE_M];
+		lon2[2] = GPSData[REQUEST_LONGITUDE_DM];
+
+		printf("GPS: (%i:%i:%i.%i) :   OP:%i  Fix:%i  Num Sats:%i  %i%c%i.%i, %i%c%i.%i   %i.%im   Date: %i\\%i\\%i   Dist: %i\n",
 				GPSData[REQUEST_UTC_H],GPSData[REQUEST_UTC_M],GPSData[REQUEST_UTC_S],
 				GPSData[REQUEST_UTC_DS], GPSData[REQUEST_OPERATION_MODE],
 				GPSData[REQUEST_FIX_STATUS], GPSData[REQUEST_SATELLITES_USED],
@@ -89,7 +111,7 @@ void testGPS(chanend gps) {
 				GPSData[REQUEST_LATITUDE_DM], GPSData[REQUEST_LONGITUDE_D],
 				((char) 176), GPSData[REQUEST_LONGITUDE_M], GPSData[REQUEST_LONGITUDE_DM],
 				GPSData[REQUEST_ALTITUDE_I], GPSData[REQUEST_ALTITUDE_F],
-				GPSData[REQUEST_MONTH], GPSData[REQUEST_DAY], GPSData[REQUEST_YEAR]);
+				GPSData[REQUEST_MONTH], GPSData[REQUEST_DAY], GPSData[REQUEST_YEAR], getDistance(lat1,lon1, lat2, lon2));
 
 		t :> time;
 		time += 50000000;

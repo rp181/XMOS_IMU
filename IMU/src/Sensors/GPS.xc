@@ -78,7 +78,7 @@ void readGPS(chanend uartRX, chanend gps, unsigned baud_rate) {
 		bufferLength = 0;
 		do {
 			select {
-case				gps :> request:
+				case gps :> request:
 				if(request != REQUEST_ALL) {
 					gps <: GPSData[request];
 				}
@@ -96,7 +96,7 @@ case				gps :> request:
 				bufferLength++;
 				break;
 			}
-		}while (byte != '\n');
+		}while (byte != '\n' && bufferLength < BUFFER_SIZE);
 		parseNMEAString(buffer, bufferLength);
 	}
 }
@@ -153,9 +153,11 @@ void parseRMC(char buffer[], int length) {
 			}
 		}
 		//Date
-		GPSData[REQUEST_DAY] = (((buffer[dateStart + 0] - '0') * 10) + ((buffer[dateStart + 1] - '0')));
-		GPSData[REQUEST_MONTH] = (((buffer[dateStart + 2] - '0') * 10) + ((buffer[dateStart + 3] - '0')));
-		GPSData[REQUEST_YEAR] = (((buffer[dateStart + 4] - '0') * 10) + ((buffer[dateStart + 5] - '0')));
+		if (dateStart < BUFFER_SIZE - 5) {
+			GPSData[REQUEST_DAY] = (((buffer[dateStart + 0] - '0') * 10) + ((buffer[dateStart + 1] - '0')));
+			GPSData[REQUEST_MONTH] = (((buffer[dateStart + 2] - '0') * 10) + ((buffer[dateStart + 3] - '0')));
+			GPSData[REQUEST_YEAR] = (((buffer[dateStart + 4] - '0') * 10) + ((buffer[dateStart + 5] - '0')));
+		}
 	}
 }
 
@@ -167,7 +169,7 @@ void parseRMC(char buffer[], int length) {
  */
 void parseGGA(char buffer[], int length) {
 	short tempAltitude, commaCounter, counter;
-
+	char valid = 0;
 	//UTC Time
 	GPSData[REQUEST_UTC_H] = (int) (((buffer[7] - '0') * 10) + ((buffer[8] - '0')));
 	GPSData[REQUEST_UTC_M] = (int) (((buffer[9] - '0') * 10) + ((buffer[10] - '0')));
@@ -206,22 +208,24 @@ void parseGGA(char buffer[], int length) {
 			break;
 		}
 	}
-	//Altitude
-	tempAltitude = 0;
-	do {
-		tempAltitude = (tempAltitude * 10) + (buffer[counter] - '0');
-		counter++;
-	} while (counter < BUFFER_SIZE && buffer[counter] != '.');
-	if (counter != BUFFER_SIZE)
-		GPSData[REQUEST_ALTITUDE_I] = tempAltitude;
+	if (counter < BUFFER_SIZE) {
+		//Altitude
+		tempAltitude = 0;
+		do {
+			tempAltitude = (tempAltitude * 10) + (buffer[counter] - '0');
+			counter++;
+		} while (counter < BUFFER_SIZE && buffer[counter] != '.');
+		if (counter != BUFFER_SIZE)
+			GPSData[REQUEST_ALTITUDE_I] = tempAltitude;
 
-	tempAltitude = 0;
-	do {
-		tempAltitude = (tempAltitude * 10) + (buffer[52 + counter] - '0');
-		counter++;
-	} while (counter < (BUFFER_SIZE - 52) && buffer[52 + counter] != ',');
-	if (counter == BUFFER_SIZE - 52)
-		GPSData[REQUEST_ALTITUDE_F] = tempAltitude;
+		tempAltitude = 0;
+		do {
+			tempAltitude = (tempAltitude * 10) + (buffer[52 + counter] - '0');
+			counter++;
+		} while (counter < (BUFFER_SIZE - 52) && buffer[52 + counter] != ',');
+		if (counter == BUFFER_SIZE - 52)
+			GPSData[REQUEST_ALTITUDE_F] = tempAltitude;
+	}
 }
 
 /**
