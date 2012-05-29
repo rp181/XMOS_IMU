@@ -25,12 +25,21 @@ void initMagnetometer(REFERENCE_PARAM(struct r_i2c,i2c)) {
 	i2c_master_write_reg(ADDRESS_7, ADDRESS_CONFIGURATION_1, singleData, 1, i2c);
 
 	//Default gain (+/- 1Ga)
-	singleData[0] = 0b00100000;
+	singleData[0] = GAIN_1;
 	i2c_master_write_reg(ADDRESS_7, ADDRESS_CONFIGURATION_2, singleData, 1, i2c);
 
 	//Continous conversion mode
 	singleData[0] = 0b00000000;
 	i2c_master_write_reg(ADDRESS_7, ADDRESS_MODE, singleData, 1, i2c);
+}
+
+/**
+ * Set the magnetometer gain (as defined by the header file)
+ * @param gain
+ */
+void setMagnetometerGain(char gain, REFERENCE_PARAM(struct r_i2c,i2c)){
+	singleData[0] = gain;
+	i2c_master_write_reg(ADDRESS_7, ADDRESS_CONFIGURATION_2, singleData, 1, i2c);
 }
 
 /**
