@@ -27,8 +27,8 @@
 #define STOP_BIT 2
 
 #define PRINT_GPS 0
-#define PRINT_MAG 0
-#define PRINT_ADC 1
+#define PRINT_MAG 1
+#define PRINT_ADC 0
 
 unsigned baud_rate = BIT_RATE;
 

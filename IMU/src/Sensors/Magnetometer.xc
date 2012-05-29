@@ -18,10 +18,19 @@ unsigned char data[6], singleData[1];
  * @param the i2c ports
  */
 void initMagnetometer(REFERENCE_PARAM(struct r_i2c,i2c)) {
-	unsigned char data[1];
 	i2c_master_init(i2c);
-	data[0] = 0;
-	i2c_master_write_reg(ADDRESS_8_WRITE, ADDRESS_MODE, data, 1, i2c);
+
+	//50 Hz normal measurement mode
+	singleData[0] = 0b00011000;
+	i2c_master_write_reg(ADDRESS_7, ADDRESS_CONFIGURATION_1, singleData, 1, i2c);
+
+	//Default gain (+/- 1Ga)
+	singleData[0] = 0b00100000;
+	i2c_master_write_reg(ADDRESS_7, ADDRESS_CONFIGURATION_2, singleData, 1, i2c);
+
+	//Continous conversion mode
+	singleData[0] = 0b00000000;
+	i2c_master_write_reg(ADDRESS_7, ADDRESS_MODE, singleData, 1, i2c);
 }
 
 /**
@@ -30,7 +39,6 @@ void initMagnetometer(REFERENCE_PARAM(struct r_i2c,i2c)) {
  * @param i2c the i2c lines the magnetometer is on
  */
 void readMagnetometer(short values[], REFERENCE_PARAM(struct r_i2c,i2c)) {
-
 	i2c_master_read_reg(ADDRESS_7, 0x03, singleData, 1, i2c);
 	data[0] = singleData[0];
 	i2c_master_read_reg(ADDRESS_7, 0x04, singleData, 1, i2c);
