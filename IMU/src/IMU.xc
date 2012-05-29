@@ -26,6 +26,10 @@
 #define SET_PARITY 2
 #define STOP_BIT 2
 
+#define PRINT_GPS 0
+#define PRINT_MAG 0
+#define PRINT_ADC 1
+
 unsigned baud_rate = BIT_RATE;
 
 /**
@@ -53,11 +57,13 @@ int main() {
 		{
 			unsigned char rx_buffer[1];
 			uart_rx(rx, rx_buffer, ARRAY_SIZE(rx_buffer), baud_rate, BITS_PER_BYTE, SET_PARITY, STOP_BIT, chanRX);
-		}on stdcore[0] :
+		} on stdcore[0] :
 		readGPS(chanRX, chanGPS, baud_rate);
-		on stdcore[0] : testGPS(chanGPS);
-		//on stdcore[0] : testADC();
-		//on stdcore[0] : testMagnetometer();
+		on stdcore[0] :
+		testGPS(chanGPS);
+		on stdcore[0] :
+		testADC();
+		on stdcore[0] : testMagnetometer();
 	}
 }
 
@@ -67,7 +73,9 @@ void testMagnetometer() {
 	initMagnetometer(magnetometer);
 	while (1) {
 		readMagnetometer(values, magnetometer);
-		printf("Magnetometer: %i\t%i\t%i\n", values[0], values[1], values[2]);
+		if (PRINT_MAG == 1){
+			printf("Magnetometer: %i\t%i\t%i\n", values[0], values[1], values[2]);
+		}
 	}
 }
 
@@ -78,7 +86,6 @@ void testGPS(chanend gps) {
 	short lat1[3], lon1[3];
 	short lat2[3], lon2[3];
 
-
 	while (1) {
 
 		lon1[0] = lon2[0];
@@ -88,7 +95,7 @@ void testGPS(chanend gps) {
 		lat1[1] = lat2[1];
 		lat1[2] = lat2[2];
 
-		gps	<: ((unsigned char) REQUEST_ALL);
+gps		<: ((unsigned char) REQUEST_ALL);
 		slave {
 			for(int i = 0; i < GPS_DATA_SIZE; i++) {
 				gps :> GPSData[i];
@@ -103,6 +110,7 @@ void testGPS(chanend gps) {
 		lon2[1] = GPSData[REQUEST_LONGITUDE_M];
 		lon2[2] = GPSData[REQUEST_LONGITUDE_DM];
 
+		if(PRINT_GPS){
 		printf("GPS: (%i:%i:%i.%i) :   OP:%i  Fix:%i  Num Sats:%i  %i%c%i.%i, %i%c%i.%i   %i.%im   Date: %i\\%i\\%i   Dist: %i\n",
 				GPSData[REQUEST_UTC_H],GPSData[REQUEST_UTC_M],GPSData[REQUEST_UTC_S],
 				GPSData[REQUEST_UTC_DS], GPSData[REQUEST_OPERATION_MODE],
@@ -112,6 +120,7 @@ void testGPS(chanend gps) {
 				((char) 176), GPSData[REQUEST_LONGITUDE_M], GPSData[REQUEST_LONGITUDE_DM],
 				GPSData[REQUEST_ALTITUDE_I], GPSData[REQUEST_ALTITUDE_F],
 				GPSData[REQUEST_MONTH], GPSData[REQUEST_DAY], GPSData[REQUEST_YEAR], getDistance(lat1,lon1, lat2, lon2));
+		}
 
 		t :> time;
 		time += 50000000;
@@ -125,6 +134,10 @@ void testADC() {
 	configureADC(adc);
 	while (1) {
 		updateADCValues(adc);
-		printf("ADC: %i\t%i\t%i\t%i\t%i\t%i\t%i\t%i\n", adc.adcValues[0], adc.adcValues[1], adc.adcValues[2], adc.adcValues[3], adc.adcValues[4], adc.adcValues[5], adc.adcValues[6], adc.adcValues[7]);
+		if (PRINT_ADC){
+			printf("ADC:\t%i\t%i\t%i\t%i\t%i\t%i\n",
+					adc.adcValues[ACCEL_X], adc.adcValues[ACCEL_Y], adc.adcValues[ACCEL_Z],
+					adc.adcValues[GYRO_X], adc.adcValues[GYRO_Y], adc.adcValues[GYRO_Z]);
+		}
 	}
 }

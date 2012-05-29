@@ -11,6 +11,13 @@
 #ifndef ADC_H_
 #define ADC_H_
 
+#define ACCEL_X 4
+#define ACCEL_Y 5
+#define ACCEL_Z 3
+#define GYRO_X 1
+#define GYRO_Y 2
+#define GYRO_Z 0
+
 /**
  * A structure containing all of the neccesary components to control a SPI ADC module
  *
