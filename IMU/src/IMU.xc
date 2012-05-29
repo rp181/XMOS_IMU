@@ -132,6 +132,7 @@ void testADC() {
 	int adcValues[8];
 
 	configureADC(adc);
+	normalizeADCValues(adc);
 	while (1) {
 		updateADCValues(adc);
 		if (PRINT_ADC){

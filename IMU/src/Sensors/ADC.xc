@@ -9,8 +9,45 @@
  */
 
 #include <xs1.h>
-#include "ADC.h"
 #include <xclib.h>
+#include "ADC.h"
+
+int samplesForNormalize = 5000;
+int offsets[8] = {0,0,0,0,0,0,0,0};
+
+void setSamplesForNormalizing(int samples){
+	samplesForNormalize = samples;
+}
+
+int getSamplesForNormalizing(){
+	return samplesForNormalize;
+}
+
+/**
+ * Average samplesForNormalize samples to offset the ADC values
+ * @param adc
+ */
+void normalizeADCValues(ADC &adc) {
+	int localSamplesForNormalize = samplesForNormalize;
+	int localOffsets[8] = {0,0,0,0,0,0,0,0};
+	timer t;
+	long time;
+
+	for (int i = 0; i < localSamplesForNormalize; i++) {
+		updateADCValues(adc);
+		for (int d = 0; d < 8; d++) {
+			localOffsets[d] += adc.adcValues[d];
+		}
+
+		t :> time;
+		time += 1000;
+		t when timerafter(time) :> void;
+	}
+
+	for (int i = 0; i < 8; i++) {
+		offsets[i] = localOffsets[i]/localSamplesForNormalize;
+	}
+}
 
 /**
  * Collects data from the SPI ADCs
@@ -19,14 +56,14 @@
  */
 void updateADCValues(ADC &adc) {
 	unsigned int compositeData;
-	unsigned short data1,data2;
+	unsigned short data1, data2;
 	unsigned char address1, address2;
 
 	//Read 4 sets of 2 packets of data (all 8 channels)
 	//Each packet of data has the address and data
-	for(int i = 0; i < 4; i++) {
+	for (int i = 0; i < 4; i++) {
 		//Read a packet of data, for channel n
-		adc.CS <: 0;
+adc		.CS <: 0;
 		clearbuf(adc.MISO);
 		adc.SCLK <: 0xAA;
 		adc.SCLK <: 0xAA;
@@ -56,8 +93,8 @@ void updateADCValues(ADC &adc) {
 		address2 = (char)((data2 & 57344) >> 13);
 
 		//Obtain the data values
-		adc.adcValues[address1] = ((data1 & 8191) >> 1);
-		adc.adcValues[address2] = ((data2 & 8191) >> 1);
+		adc.adcValues[address1] = ((data1 & 8191) >> 1) - offsets[address1];
+		adc.adcValues[address2] = ((data2 & 8191) >> 1) - offsets[address2];
 	}
 }
 
@@ -82,36 +119,36 @@ void configureADC(ADC &adc) {
 	start_clock(adc.blk2);
 	adc.SCLK <: 0xFF;
 
-	adc.CS 		<: 1;
-	adc.MOSI 	<: 1;
-	adc.CS 		<: 0;
+	adc.CS <: 1;
+	adc.MOSI <: 1;
+	adc.CS <: 0;
 
 	clearbuf(adc.MISO);
-	adc.SCLK 	<: 0xAA;
-	adc.SCLK 	<: 0xAA;
-	adc.SCLK 	<: 0xAA;
-	adc.SCLK 	<: 0xAA;
-	adc.SCLK 	<: 0xAA;
-	adc.SCLK	<: 0xAA;
-	adc.SCLK	<: 0xAA;
-	adc.SCLK	<: 0xAA;
+	adc.SCLK <: 0xAA;
+	adc.SCLK <: 0xAA;
+	adc.SCLK <: 0xAA;
+	adc.SCLK <: 0xAA;
+	adc.SCLK <: 0xAA;
+	adc.SCLK <: 0xAA;
+	adc.SCLK <: 0xAA;
+	adc.SCLK <: 0xAA;
 
 	sync(adc.SCLK);
-	adc.MISO 	:> data;
+	adc.MISO :> data;
 
 	clearbuf(adc.MISO);
-	adc.SCLK 	<: 0xAA;
-	adc.SCLK 	<: 0xAA;
-	adc.SCLK 	<: 0xAA;
-	adc.SCLK 	<: 0xAA;
-	adc.SCLK 	<: 0xAA;
-	adc.SCLK 	<: 0xAA;
-	adc.SCLK 	<: 0xAA;
-	adc.SCLK 	<: 0xAA;
+	adc.SCLK <: 0xAA;
+	adc.SCLK <: 0xAA;
+	adc.SCLK <: 0xAA;
+	adc.SCLK <: 0xAA;
+	adc.SCLK <: 0xAA;
+	adc.SCLK <: 0xAA;
+	adc.SCLK <: 0xAA;
+	adc.SCLK <: 0xAA;
 
 	sync(adc.SCLK);
-	adc.MISO 	:> data;
+	adc.MISO :> data;
 
-	adc.CS 		<: 1;
-	adc.MOSI 	<: 0;
+	adc.CS <: 1;
+	adc.MOSI <: 0;
 }

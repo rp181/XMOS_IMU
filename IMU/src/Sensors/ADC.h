@@ -38,6 +38,15 @@ typedef struct ADC {
 	int adcValues[8];
 } ADC;
 
+void setSamplesForNormalizing(int samples);
+int getSamplesForNormalizing();
+
+/**
+ * Average samplesForNormalize samples to offset the ADC values
+ * @param adc
+ */
+void normalizeADCValues(ADC &adc);
+
 /**
  * Bit-bangs configuration data to the ADC:
  * Normal power mode, sequencer 0-7, maximum speed
