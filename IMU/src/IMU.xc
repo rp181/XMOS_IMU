@@ -139,15 +139,14 @@ void testADC() {
 	setSamplesForNormalizing(50000);
 	normalizeADCValues(adc);
 	while (1) {
-		for (int i = 0; i < 100; i++) {
-			updateADCValues(adc);
-			t :> time;
-			gRoll = getGRoll(adc.adcValues[GYRO_X], time);
-			t :> time;
-			gPitch = getGPitch(adc.adcValues[GYRO_Y], time);
-			t :> time;
-			gYaw = getGYaw(adc.adcValues[GYRO_Z], time);
-		}
+		updateADCValues(adc);
+		t :> time;
+		gRoll = getGRoll(adc.adcValues[GYRO_X], time);
+		t :> time;
+		gPitch = getGPitch(adc.adcValues[GYRO_Y], time);
+		t :> time;
+		gYaw = getGYaw(adc.adcValues[GYRO_Z], time);
+
 		if (PRINT_ADC) {
 			printf("ADC:\t%i\t%i\t%i\t%i\t%i\t%i\t\tA_Roll: %i \tA_Pitch: %i \tG_Roll: %i \tG_Pitch: %i \tG_Yaw: %i\n",
 					adc.adcValues[ACCEL_X], adc.adcValues[ACCEL_Y], adc.adcValues[ACCEL_Z],
@@ -155,6 +154,7 @@ void testADC() {
 					getARoll(adc.rawAdcValues[ACCEL_Y] - Y_OFFSET, adc.rawAdcValues[ACCEL_Z] - Z_OFFSET),
 					getAPitch(adc.rawAdcValues[ACCEL_X] - X_OFFSET, adc.rawAdcValues[ACCEL_Y] - Y_OFFSET, adc.rawAdcValues[ACCEL_Z] - Z_OFFSET),
 					gRoll, gPitch, gYaw);
+
 		}
 	}
 }
