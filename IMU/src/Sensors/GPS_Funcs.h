@@ -1,8 +1,11 @@
-/*
- * GPS_Funcs.h
- *
- *  Created on: May 28, 2012
- *      Author: Phani
+/**
+ * @file
+ * @author Phani Gaddipati <phanigaddipati@yahoo.com>\n
+ * <a href "www.centumengineering.com">Centum Engineering</a>
+ * @version 1.0
+ * @section License
+ * This code can be used only with expressed consent from the owner
+ * @section Description
  */
 
 #ifndef GPS_FUNCS_H_

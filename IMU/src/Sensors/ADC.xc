@@ -13,7 +13,6 @@
 #include "ADC.h"
 
 int samplesForNormalize = 5000;
-int offsets[8] = {0,0,0,0,0,0,0,0};
 
 void setSamplesForNormalizing(int samples){
 	samplesForNormalize = samples;
@@ -45,7 +44,7 @@ void normalizeADCValues(ADC &adc) {
 	}
 
 	for (int i = 0; i < 8; i++) {
-		offsets[i] = localOffsets[i]/localSamplesForNormalize;
+		adc.offsets[i] = localOffsets[i]/localSamplesForNormalize;
 	}
 }
 
@@ -95,8 +94,8 @@ adc		.CS <: 0;
 		//Obtain the data values
 		adc.rawAdcValues[address1] = ((data1 & 8191) >> 1);
 		adc.rawAdcValues[address2] = ((data2 & 8191) >> 1);
-		adc.adcValues[address1] = adc.rawAdcValues[address1] - offsets[address1];
-		adc.adcValues[address2] = adc.rawAdcValues[address2] - offsets[address2];
+		adc.adcValues[address1] = adc.rawAdcValues[address1] - adc.offsets[address1];
+		adc.adcValues[address2] = adc.rawAdcValues[address2] - adc.offsets[address2];
 	}
 }
 

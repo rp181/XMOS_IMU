@@ -11,7 +11,6 @@ extern "C" {
 #include "GPS_Funcs.h"
 }
 #include <math.h>
-#include <stdio.h>
 
 #define PI 3.141592653
 #define EARTH_RADIUS 6371000 //Radius of the earth in m (assuming perfect sphere)

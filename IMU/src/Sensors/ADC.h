@@ -18,6 +18,10 @@
 #define GYRO_Y 2
 #define GYRO_Z 0
 
+#define X_OFFSET 947
+#define Y_OFFSET 1372
+#define Z_OFFSET 1820
+
 /**
  * A structure containing all of the neccesary components to control a SPI ADC module
  *
@@ -37,6 +41,7 @@ typedef struct ADC {
 	clock blk2;
 	int adcValues[8];
 	int rawAdcValues[8];
+	int offsets[8];
 } ADC;
 
 void setSamplesForNormalizing(int samples);

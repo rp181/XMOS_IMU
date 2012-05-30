@@ -18,6 +18,7 @@
 #include "Sensors/GPS.h"
 #include "Sensors/Magnetometer.h"
 #include "Sensors/GPS_Funcs.h"
+#include "Sensors/ADC_Funcs.h"
 
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof(a[0]))
 
@@ -57,7 +58,7 @@ int main() {
 		{
 			unsigned char rx_buffer[1];
 			uart_rx(rx, rx_buffer, ARRAY_SIZE(rx_buffer), baud_rate, BITS_PER_BYTE, SET_PARITY, STOP_BIT, chanRX);
-		} on stdcore[0] :
+		}on stdcore[0] :
 		readGPS(chanRX, chanGPS, baud_rate);
 		on stdcore[0] :
 		testGPS(chanGPS);
@@ -73,7 +74,7 @@ void testMagnetometer() {
 	initMagnetometer(magnetometer);
 	while (1) {
 		readMagnetometer(values, magnetometer);
-		if (PRINT_MAG == 1){
+		if (PRINT_MAG == 1) {
 			printf("Mag: %i\t%i\t%i\n", values[0], values[1], values[2]);
 		}
 	}
@@ -110,16 +111,16 @@ gps		<: ((unsigned char) REQUEST_ALL);
 		lon2[1] = GPSData[REQUEST_LONGITUDE_M];
 		lon2[2] = GPSData[REQUEST_LONGITUDE_DM];
 
-		if(PRINT_GPS){
-		printf("GPS: (%i:%i:%i.%i) :   OP:%i  Fix:%i  Num Sats:%i  %i%c%i.%i, %i%c%i.%i   %i.%im   Date: %i\\%i\\%i   Dist: %i\n",
-				GPSData[REQUEST_UTC_H],GPSData[REQUEST_UTC_M],GPSData[REQUEST_UTC_S],
-				GPSData[REQUEST_UTC_DS], GPSData[REQUEST_OPERATION_MODE],
-				GPSData[REQUEST_FIX_STATUS], GPSData[REQUEST_SATELLITES_USED],
-				GPSData[REQUEST_LATITUDE_D], ((char) 176), GPSData[REQUEST_LATITUDE_M],
-				GPSData[REQUEST_LATITUDE_DM], GPSData[REQUEST_LONGITUDE_D],
-				((char) 176), GPSData[REQUEST_LONGITUDE_M], GPSData[REQUEST_LONGITUDE_DM],
-				GPSData[REQUEST_ALTITUDE_I], GPSData[REQUEST_ALTITUDE_F],
-				GPSData[REQUEST_MONTH], GPSData[REQUEST_DAY], GPSData[REQUEST_YEAR], getDistance(lat1,lon1, lat2, lon2));
+		if(PRINT_GPS) {
+			printf("GPS: (%i:%i:%i.%i) :   OP:%i  Fix:%i  Num Sats:%i  %i%c%i.%i, %i%c%i.%i   %i.%im   Date: %i\\%i\\%i   Dist: %i\n",
+					GPSData[REQUEST_UTC_H],GPSData[REQUEST_UTC_M],GPSData[REQUEST_UTC_S],
+					GPSData[REQUEST_UTC_DS], GPSData[REQUEST_OPERATION_MODE],
+					GPSData[REQUEST_FIX_STATUS], GPSData[REQUEST_SATELLITES_USED],
+					GPSData[REQUEST_LATITUDE_D], ((char) 176), GPSData[REQUEST_LATITUDE_M],
+					GPSData[REQUEST_LATITUDE_DM], GPSData[REQUEST_LONGITUDE_D],
+					((char) 176), GPSData[REQUEST_LONGITUDE_M], GPSData[REQUEST_LONGITUDE_DM],
+					GPSData[REQUEST_ALTITUDE_I], GPSData[REQUEST_ALTITUDE_F],
+					GPSData[REQUEST_MONTH], GPSData[REQUEST_DAY], GPSData[REQUEST_YEAR], getDistance(lat1,lon1, lat2, lon2));
 		}
 
 		t :> time;
@@ -137,10 +138,12 @@ void testADC() {
 	normalizeADCValues(adc);
 	while (1) {
 		updateADCValues(adc);
-		if (PRINT_ADC){
-			printf("ADC:\t%i\t%i\t%i\t%i\t%i\t%i\n",
-					adc.adcValues[ACCEL_X], adc.adcValues[ACCEL_Y], adc.adcValues[ACCEL_Z],
-					adc.adcValues[GYRO_X], adc.adcValues[GYRO_Y], adc.adcValues[GYRO_Z]);
+		if (PRINT_ADC) {
+			printf("ADC:\t%i\t%i\t%i\t%i\t%i\t%i\t\tRoll: %i\t\tPitch:%i\n",
+					adc.rawAdcValues[ACCEL_X] - X_OFFSET, adc.rawAdcValues[ACCEL_Y] - Y_OFFSET, adc.rawAdcValues[ACCEL_Z] - Z_OFFSET,
+					adc.rawAdcValues[GYRO_X], adc.rawAdcValues[GYRO_Y], adc.rawAdcValues[GYRO_Z],
+					getRoll(adc.rawAdcValues[ACCEL_Y] - Y_OFFSET, adc.rawAdcValues[ACCEL_Z] - Z_OFFSET),
+					getPitch(adc.rawAdcValues[ACCEL_X] - X_OFFSET, adc.rawAdcValues[ACCEL_Y] - Y_OFFSET, adc.rawAdcValues[ACCEL_Z] - Z_OFFSET));
 		}
 	}
 }
