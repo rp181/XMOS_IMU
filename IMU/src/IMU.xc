@@ -27,8 +27,8 @@
 #define STOP_BIT 2
 
 #define PRINT_GPS 0
-#define PRINT_MAG 1
-#define PRINT_ADC 0
+#define PRINT_MAG 0
+#define PRINT_ADC 1
 
 unsigned baud_rate = BIT_RATE;
 
@@ -74,7 +74,7 @@ void testMagnetometer() {
 	while (1) {
 		readMagnetometer(values, magnetometer);
 		if (PRINT_MAG == 1){
-			printf("Magnetometer: %i\t%i\t%i\n", values[0], values[1], values[2]);
+			printf("Mag: %i\t%i\t%i\n", values[0], values[1], values[2]);
 		}
 	}
 }
@@ -132,6 +132,8 @@ void testADC() {
 	int adcValues[8];
 
 	configureADC(adc);
+	printf("Normalizing ADC Values...\n");
+	setSamplesForNormalizing(50000);
 	normalizeADCValues(adc);
 	while (1) {
 		updateADCValues(adc);

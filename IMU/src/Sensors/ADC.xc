@@ -93,8 +93,10 @@ adc		.CS <: 0;
 		address2 = (char)((data2 & 57344) >> 13);
 
 		//Obtain the data values
-		adc.adcValues[address1] = ((data1 & 8191) >> 1) - offsets[address1];
-		adc.adcValues[address2] = ((data2 & 8191) >> 1) - offsets[address2];
+		adc.rawAdcValues[address1] = ((data1 & 8191) >> 1);
+		adc.rawAdcValues[address2] = ((data2 & 8191) >> 1);
+		adc.adcValues[address1] = adc.rawAdcValues[address1] - offsets[address1];
+		adc.adcValues[address2] = adc.rawAdcValues[address2] - offsets[address2];
 	}
 }
 

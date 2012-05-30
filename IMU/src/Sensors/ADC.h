@@ -36,6 +36,7 @@ typedef struct ADC {
 	clock blk1;
 	clock blk2;
 	int adcValues[8];
+	int rawAdcValues[8];
 } ADC;
 
 void setSamplesForNormalizing(int samples);
