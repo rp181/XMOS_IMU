@@ -139,9 +139,9 @@ void testADC() {
 	while (1) {
 		updateADCValues(adc);
 		if (PRINT_ADC) {
-			printf("ADC:\t%i\t%i\t%i\t%i\t%i\t%i\t\tRoll: %i\t\tPitch:%i\n",
-					adc.rawAdcValues[ACCEL_X] - X_OFFSET, adc.rawAdcValues[ACCEL_Y] - Y_OFFSET, adc.rawAdcValues[ACCEL_Z] - Z_OFFSET,
-					adc.rawAdcValues[GYRO_X], adc.rawAdcValues[GYRO_Y], adc.rawAdcValues[GYRO_Z],
+			printf("ADC:\t%i\t%i\t%i\t%i\t%i\t%i\t\tRoll: %i \tPitch:%i\n",
+					adc.adcValues[ACCEL_X], adc.adcValues[ACCEL_Y], adc.adcValues[ACCEL_Z],
+					adc.adcValues[GYRO_X], adc.adcValues[GYRO_Y], adc.adcValues[GYRO_Z],
 					getRoll(adc.rawAdcValues[ACCEL_Y] - Y_OFFSET, adc.rawAdcValues[ACCEL_Z] - Z_OFFSET),
 					getPitch(adc.rawAdcValues[ACCEL_X] - X_OFFSET, adc.rawAdcValues[ACCEL_Y] - Y_OFFSET, adc.rawAdcValues[ACCEL_Z] - Z_OFFSET));
 		}
