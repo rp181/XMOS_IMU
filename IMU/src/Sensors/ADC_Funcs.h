@@ -17,7 +17,11 @@
 #define EXTERNAL extern "C"
 #endif
 
-EXTERNAL int getRoll(int y, int z);
-EXTERNAL int getPitch(int x, int y, int z);
+EXTERNAL int getGRoll(int rateCounts, long time);
+EXTERNAL int getGPitch(int rateCounts, long time);
+EXTERNAL int getGYaw(int rateCounts, long time);
+EXTERNAL int getDegreesSecond(int rateCounts);
+EXTERNAL int getARoll(int y, int z);
+EXTERNAL int getAPitch(int x, int y, int z);
 
 #endif /* ADC_FUNCS_H_ */
