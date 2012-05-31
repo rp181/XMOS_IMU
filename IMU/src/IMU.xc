@@ -15,6 +15,8 @@
 #include "Sensors/ADC.h"
 #include "UART/RX/uart_rx.h"
 #include "UART/RX/uart_rx_impl.h"
+#include "UART/TX/uart_tx.h"
+#include "UART/TX/uart_tx_impl.h"
 #include "Sensors/GPS.h"
 #include "Sensors/Magnetometer.h"
 #include "Sensors/GPS_Funcs.h"
@@ -22,7 +24,8 @@
 
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof(a[0]))
 
-#define BIT_RATE 4800
+#define GPS_BIT_RATE 4800
+#define SERVER_BIT_RATE 115200
 #define BITS_PER_BYTE 8
 #define SET_PARITY 2
 #define STOP_BIT 2
@@ -31,40 +34,88 @@
 #define PRINT_MAG 0
 #define PRINT_ADC 1
 
-unsigned baud_rate = BIT_RATE;
+unsigned gps_baud_rate = GPS_BIT_RATE;
+unsigned server_baud_rate = SERVER_BIT_RATE;
 
-/**
- * The ADC connected to the 3 Axis Gyros and 3 Axis Accelerometer
- * Channels'respective data is define in the header file
- */
 ADC adc = { PORT_ADC_CS, PORT_ADC_MOSI, PORT_ADC_MISO, PORT_ADC_SCLK, XS1_CLKBLK_1, XS1_CLKBLK_2 };
-/**
- * RX from the GPS Module
- */
-buffered in port:1 rx = PORT_GPS_RX;
-/**
- * I2C Ports for the Magnetometer
- */
+
+buffered in port:1 gpsRx = PORT_GPS_RX;
+
+buffered in port:1 serverRx = PORT_COM0;
+out port serverTx = PORT_COM1;
+
 struct r_i2c magnetometer = { PORT_MAG_SCL, PORT_MAG_SDA };
 
 void testADC();
 void testGPS(chanend gps);
 void testMagnetometer();
+void testAllWithServer(chanend serverTx);
 
 int main() {
-	chan chanRX, chanGPS;
+	chan chanGPSRx, chanGPS, chanServerRx, chanServerTx;
 	par {
+		/*
 		on stdcore[0] :
 		{
 			unsigned char rx_buffer[1];
-			uart_rx(rx, rx_buffer, ARRAY_SIZE(rx_buffer), baud_rate, BITS_PER_BYTE, SET_PARITY, STOP_BIT, chanRX);
-		}on stdcore[0] :
-		readGPS(chanRX, chanGPS, baud_rate);
+			uart_rx(gpsRx, rx_buffer, ARRAY_SIZE(rx_buffer), gps_baud_rate, BITS_PER_BYTE, SET_PARITY, STOP_BIT, chanGPSRx);
+		}
+		*/
+		/*on stdcore[0] :
+		{
+			unsigned char rx_buffer[1];
+			uart_rx(serverRx, rx_buffer, ARRAY_SIZE(rx_buffer), server_baud_rate, BITS_PER_BYTE, SET_PARITY, STOP_BIT, chanServerRx);
+		}
+		*/
 		on stdcore[0] :
-		testGPS(chanGPS);
-		on stdcore[0] :
-		testADC();
-		on stdcore[0] : testMagnetometer();
+		{
+			unsigned char tx_buffer[1];
+			uart_tx(serverTx, tx_buffer, ARRAY_SIZE(tx_buffer), server_baud_rate, BITS_PER_BYTE, SET_PARITY, STOP_BIT, chanServerTx);
+		}
+		//on stdcore[0] :	readGPS(chanGPSRx, chanGPS, gps_baud_rate);
+		on stdcore[0] : testAllWithServer(chanServerTx);
+		/*
+		 on stdcore[0] :
+		 testGPS(chanGPS);
+		 on stdcore[0] :
+		 testADC();
+		 on stdcore[0] : testMagnetometer();
+		 */
+	}
+}
+
+void testAllWithServer(chanend chanServerTx) {
+	int adcValues[8], gRoll, gPitch, gYaw, aRoll, aPitch;
+	timer t;
+	long time;
+	unsigned char txBuffer[1024];
+	int bufferLength = 0;
+
+	configureADC(adc);
+	printf("Normalizing ADC Values...\n");
+	setSamplesForNormalizing(50000);
+	normalizeADCValues(adc);
+	while (1) {
+		updateADCValues(adc);
+t		:> time;
+		gRoll = getGRoll(adc.adcValues[GYRO_X], time);
+		t :> time;
+		gPitch = getGPitch(adc.adcValues[GYRO_Y], time);
+		t :> time;
+		gYaw = getGYaw(adc.adcValues[GYRO_Z], time);
+
+		aRoll = getARoll(adc.rawAdcValues[ACCEL_Y] - Y_OFFSET, adc.rawAdcValues[ACCEL_Z] - Z_OFFSET);
+		aPitch = getAPitch(adc.rawAdcValues[ACCEL_X] - X_OFFSET, adc.rawAdcValues[ACCEL_Y] - Y_OFFSET, adc.rawAdcValues[ACCEL_Z] - Z_OFFSET);
+
+		bufferLength = sprintf(txBuffer, "A:%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%i\n",
+				adc.adcValues[ACCEL_X],adc.adcValues[ACCEL_Y],adc.adcValues[ACCEL_Z],
+				adc.adcValues[GYRO_X],adc.adcValues[GYRO_Y],adc.adcValues[GYRO_Z],
+				aRoll, aPitch, gRoll, gPitch, gYaw);
+
+		for(int i = 0; i < bufferLength; i++) {
+			uart_tx_send_byte(chanServerTx,((unsigned char)txBuffer[i]));
+		}
+
 	}
 }
 
@@ -139,17 +190,18 @@ void testADC() {
 	setSamplesForNormalizing(50000);
 	normalizeADCValues(adc);
 	while (1) {
-		updateADCValues(adc);
-		t :> time;
-		gRoll = getGRoll(adc.adcValues[GYRO_X], time);
-		t :> time;
-		gPitch = getGPitch(adc.adcValues[GYRO_Y], time);
-		t :> time;
-		gYaw = getGYaw(adc.adcValues[GYRO_Z], time);
+		for (int i = 0; i < 5; i++) {
+			updateADCValues(adc);
+t			:> time;
+			gRoll = getGRoll(adc.adcValues[GYRO_X], time);
+			t :> time;
+			gPitch = getGPitch(adc.adcValues[GYRO_Y], time);
+			t :> time;
+			gYaw = getGYaw(adc.adcValues[GYRO_Z], time);
 
-		aRoll = getARoll(adc.rawAdcValues[ACCEL_Y] - Y_OFFSET, adc.rawAdcValues[ACCEL_Z] - Z_OFFSET);
-		aPitch = getAPitch(adc.rawAdcValues[ACCEL_X] - X_OFFSET, adc.rawAdcValues[ACCEL_Y] - Y_OFFSET, adc.rawAdcValues[ACCEL_Z] - Z_OFFSET);
-
+			aRoll = getARoll(adc.rawAdcValues[ACCEL_Y] - Y_OFFSET, adc.rawAdcValues[ACCEL_Z] - Z_OFFSET);
+			aPitch = getAPitch(adc.rawAdcValues[ACCEL_X] - X_OFFSET, adc.rawAdcValues[ACCEL_Y] - Y_OFFSET, adc.rawAdcValues[ACCEL_Z] - Z_OFFSET);
+		}
 		if (PRINT_ADC) {
 			printf("ADC:\t%i\t%i\t%i\t%i\t%i\t%i\tA_Roll: %i \tA_Pitch: %i \tG_Roll: %i \tG_Pitch: %i \tG_Yaw: %i\n",
 					adc.adcValues[ACCEL_X], adc.adcValues[ACCEL_Y], adc.adcValues[ACCEL_Z],
