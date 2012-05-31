@@ -11,7 +11,11 @@
 	<Packages>
 		<Package id="0" Type="XS1-L1A-TQ128">
 			<Nodes>
-				<Node Id="0" InPackageId="0" Type="XS1-L1A" Oscillator="20MHz" SystemFrequency="500MHz">
+				<Node Id="0" InPackageId="0" Type="XS1-L1A" Oscillator="20MHz"
+					SystemFrequency="500MHz">
+					<Boot>
+						<Source Location="SPI:bootFlash" />
+					</Boot>
 					<Core Number="0" Reference="stdcore[0]">
 						<!-- ADC Ports -->
 						<Port Location="XS1_PORT_1J" Name="PORT_ADC_CS" />
@@ -29,12 +33,27 @@
 						<Port Location="XS1_PORT_1N" Name="PORT_COM1" />
 						<Port Location="XS1_PORT_1O" Name="PORT_COM2" />
 						<Port Location="XS1_PORT_1P" Name="PORT_COM3" />
+						<!-- Flash Ports -->
+						<Port Location="XS1_PORT_1A" Name="PORT_SPI_MISO" />
+						<Port Location="XS1_PORT_1B" Name="PORT_SPI_SS" />
+						<Port Location="XS1_PORT_1C" Name="PORT_SPI_CLK" />
+						<Port Location="XS1_PORT_1D" Name="PORT_SPI_MOSI" />
 					</Core>
 				</Node>
 			</Nodes>
 		</Package>
 	</Packages>
-
+	
+	<ExternalDevices>
+		<Device NodeId="0" Core="0" Class="SPIFlash" Name="bootFlash"
+			Type="W25X10BV">
+			<Attribute Name="PORT_SPI_MISO" Value="PORT_SPI_MISO" />
+			<Attribute Name="PORT_SPI_SS" Value="PORT_SPI_SS" />
+			<Attribute Name="PORT_SPI_CLK" Value="PORT_SPI_CLK" />
+			<Attribute Name="PORT_SPI_MOSI" Value="PORT_SPI_MOSI" />
+		</Device>
+	</ExternalDevices>
+	
 	<JTAGChain>
 		<JTAGDevice NodeId="0" />
 	</JTAGChain>
