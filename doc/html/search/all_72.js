@@ -1,6 +1,8 @@
 var searchData=
 [
   ['r_5fi2c',['r_i2c',['../structr__i2c.html',1,'']]],
+  ['rad_5fto_5fdeg',['RAD_TO_DEG',['../_g_p_s___funcs_8cpp.html#a89e47af0449640d4f15191aba5ca24c6',1,'GPS_Funcs.cpp']]],
+  ['rawadcvalues',['rawAdcValues',['../struct_a_d_c.html#adc9d2fb56c1d0d637ad40f2dd7c33a89',1,'ADC']]],
   ['read_5findex',['read_index',['../structbuffer__state.html#ae304c4ef5e6791618f4c51431487b564',1,'buffer_state']]],
   ['readgps',['readGPS',['../_g_p_s_8h.html#a910d3e15ee88b27c932bc732f001d3c4',1,'readGPS(chanend uartRX, chanend gps, unsigned baud_rate):&#160;GPS.xc'],['../_g_p_s_8xc.html#a910d3e15ee88b27c932bc732f001d3c4',1,'readGPS(chanend uartRX, chanend gps, unsigned baud_rate):&#160;GPS.xc']]],
   ['readmagnetometer',['readMagnetometer',['../_magnetometer_8xc.html#a8b1117ccb210433a920bf099b9465589',1,'Magnetometer.xc']]],
@@ -23,5 +25,6 @@ var searchData=
   ['request_5futc_5fh',['REQUEST_UTC_H',['../_g_p_s_8h.html#a19342c7930ef8599805a01cf2c05a63c',1,'GPS.h']]],
   ['request_5futc_5fm',['REQUEST_UTC_M',['../_g_p_s_8h.html#a414012057b5b43d1298d805978dc94a0',1,'GPS.h']]],
   ['request_5futc_5fs',['REQUEST_UTC_S',['../_g_p_s_8h.html#ac217a760cdbb0d9b69d74131b804814f',1,'GPS.h']]],
-  ['request_5fyear',['REQUEST_YEAR',['../_g_p_s_8h.html#ae5fbedf9d6dfb47b86255462d0608e9d',1,'GPS.h']]]
+  ['request_5fyear',['REQUEST_YEAR',['../_g_p_s_8h.html#ae5fbedf9d6dfb47b86255462d0608e9d',1,'GPS.h']]],
+  ['rtime',['rTime',['../_a_d_c___funcs_8cpp.html#ae2d0076b70f152f5d33df74a97ed5413',1,'ADC_Funcs.cpp']]]
 ];

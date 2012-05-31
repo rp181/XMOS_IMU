@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['rad_5fto_5fdeg',['RAD_TO_DEG',['../_g_p_s___funcs_8cpp.html#a89e47af0449640d4f15191aba5ca24c6',1,'GPS_Funcs.cpp']]],
   ['request_5fall',['REQUEST_ALL',['../_g_p_s_8h.html#adb517e383dd07fa6c5e2c77b40108db5',1,'GPS.h']]],
   ['request_5faltitude_5ff',['REQUEST_ALTITUDE_F',['../_g_p_s_8h.html#a8b94e10ae6cc5f9eb65846f0d4cc5b80',1,'GPS.h']]],
   ['request_5faltitude_5fi',['REQUEST_ALTITUDE_I',['../_g_p_s_8h.html#a5657838ca29aaf8d27681681d0a0eb41',1,'GPS.h']]],

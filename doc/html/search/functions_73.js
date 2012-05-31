@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['setmagnetometergain',['setMagnetometerGain',['../_magnetometer_8xc.html#a42a7f85ad79427b4c3c589177f96dd2c',1,'Magnetometer.xc']]],
+  ['setsamplesfornormalizing',['setSamplesForNormalizing',['../_a_d_c_8h.html#a0cbbe5f2546fcf9be2e3687d69d8d009',1,'setSamplesForNormalizing(int samples):&#160;ADC.xc'],['../_a_d_c_8xc.html#a0cbbe5f2546fcf9be2e3687d69d8d009',1,'setSamplesForNormalizing(int samples):&#160;ADC.xc']]],
   ['spi_5fmaster_5fin_5fbuffer',['spi_master_in_buffer',['../spi__master_8h.html#ad2370f1421310a49b594b1d8cfb612b8',1,'spi_master_in_buffer(spi_master_interface &amp;spi_if, unsigned char buffer[], int num_bytes):&#160;spi_master.xc'],['../spi__master_8xc.html#ad2370f1421310a49b594b1d8cfb612b8',1,'spi_master_in_buffer(spi_master_interface &amp;spi_if, unsigned char buffer[], int num_bytes):&#160;spi_master.xc']]],
   ['spi_5fmaster_5fin_5fbyte',['spi_master_in_byte',['../spi__master_8h.html#adf1e3ba255e648354810dde29f7a4035',1,'spi_master_in_byte(spi_master_interface &amp;spi_if):&#160;spi_master.xc'],['../spi__master_8xc.html#adf1e3ba255e648354810dde29f7a4035',1,'spi_master_in_byte(spi_master_interface &amp;spi_if):&#160;spi_master.xc']]],
   ['spi_5fmaster_5fin_5fshort',['spi_master_in_short',['../spi__master_8h.html#a2f9109ebeab3ed846091646e0388c290',1,'spi_master_in_short(spi_master_interface &amp;spi_if):&#160;spi_master.xc'],['../spi__master_8xc.html#a2f9109ebeab3ed846091646e0388c290',1,'spi_master_in_short(spi_master_interface &amp;spi_if):&#160;spi_master.xc']]],

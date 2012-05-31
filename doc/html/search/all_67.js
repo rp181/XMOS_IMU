@@ -1,7 +1,27 @@
 var searchData=
 [
+  ['getapitch',['getAPitch',['../_a_d_c___funcs_8cpp.html#abdd7defc3f0ab9d668f2b38c7111d998',1,'getAPitch(int x, int y, int z):&#160;ADC_Funcs.cpp'],['../_a_d_c___funcs_8h.html#a21f11f6655b7d57c98539cd7553f4d5b',1,'getAPitch(int x, int y, int z):&#160;ADC_Funcs.cpp']]],
+  ['getaroll',['getARoll',['../_a_d_c___funcs_8cpp.html#aa53b221fd9499f621da5a68dc295c19f',1,'getARoll(int y, int z):&#160;ADC_Funcs.cpp'],['../_a_d_c___funcs_8h.html#ab3457b66f329d929435a2c43866f9fdc',1,'getARoll(int y, int z):&#160;ADC_Funcs.cpp']]],
+  ['getbearing',['getBearing',['../_g_p_s___funcs_8cpp.html#a5a33c890d66c20fc706032f974e4a82f',1,'getBearing(short lat1[3], short lon1[3], short lat2[3], short lon2[3]):&#160;GPS_Funcs.cpp'],['../_g_p_s___funcs_8h.html#a5a33c890d66c20fc706032f974e4a82f',1,'getBearing(short lat1[3], short lon1[3], short lat2[3], short lon2[3]):&#160;GPS_Funcs.cpp']]],
+  ['getdegreessecond',['getDegreesSecond',['../_a_d_c___funcs_8cpp.html#ab52699153d3c1fdf1d25313e42c8f4c7',1,'getDegreesSecond(int rateCounts):&#160;ADC_Funcs.cpp'],['../_a_d_c___funcs_8h.html#a2a6bdf1e15c1290747acd9ad167da99a',1,'getDegreesSecond(int rateCounts):&#160;ADC_Funcs.cpp']]],
+  ['getdistance',['getDistance',['../_g_p_s___funcs_8cpp.html#a10a35d264a4c61581dae0a16b293e883',1,'getDistance(short lat1[3], short lon1[3], short lat2[3], short lon2[3]):&#160;GPS_Funcs.cpp'],['../_g_p_s___funcs_8h.html#a2d5092966c10b19ce22a79a46b5a7c18',1,'getDistance(short lat1[3], short lon1[3], short lat2[3], short lon2[3]):&#160;GPS_Funcs.cpp']]],
+  ['getgpitch',['getGPitch',['../_a_d_c___funcs_8cpp.html#a462650ed05312c6164eed9dea8813ec2',1,'getGPitch(int rateCounts, long time):&#160;ADC_Funcs.cpp'],['../_a_d_c___funcs_8h.html#aa2c24bee6d83cee35b3d161d8725d040',1,'getGPitch(int rateCounts, long time):&#160;ADC_Funcs.cpp']]],
+  ['getgroll',['getGRoll',['../_a_d_c___funcs_8cpp.html#aa8142f87c6558f0430b6eaa6e0eab671',1,'getGRoll(int rateCounts, long time):&#160;ADC_Funcs.cpp'],['../_a_d_c___funcs_8h.html#a86bc1396817ee9d2b35c7861dff9dd52',1,'getGRoll(int rateCounts, long time):&#160;ADC_Funcs.cpp']]],
+  ['getgyaw',['getGYaw',['../_a_d_c___funcs_8cpp.html#a750b9ceee315ffc1f2d5992af4a2ef35',1,'getGYaw(int rateCounts, long time):&#160;ADC_Funcs.cpp'],['../_a_d_c___funcs_8h.html#ac8ac7175fbc0eeda184e4ed12588d5ae',1,'getGYaw(int rateCounts, long time):&#160;ADC_Funcs.cpp']]],
+  ['getradiansdouble',['getRadiansDouble',['../_g_p_s___funcs_8cpp.html#ae687f2c0e85c937cecd0926eee7df1a1',1,'GPS_Funcs.cpp']]],
+  ['getsamplesfornormalizing',['getSamplesForNormalizing',['../_a_d_c_8h.html#aa9491c6e48d2a9dd5c78ae5b13ed9339',1,'getSamplesForNormalizing():&#160;ADC.xc'],['../_a_d_c_8xc.html#aa9491c6e48d2a9dd5c78ae5b13ed9339',1,'getSamplesForNormalizing():&#160;ADC.xc']]],
+  ['gpitch',['gPitch',['../_a_d_c___funcs_8cpp.html#a0117be53b2e382255378ad8be2df79c2',1,'ADC_Funcs.cpp']]],
   ['gps_2eh',['GPS.h',['../_g_p_s_8h.html',1,'']]],
   ['gps_2exc',['GPS.xc',['../_g_p_s_8xc.html',1,'']]],
+  ['gps_5fbaud_5frate',['gps_baud_rate',['../_i_m_u_8xc.html#a6b740ef97077f767d1e548b189bf4d55',1,'IMU.xc']]],
+  ['gps_5fbit_5frate',['GPS_BIT_RATE',['../_i_m_u_8xc.html#aaf5d771ef7d566546d7efffa98f87812',1,'IMU.xc']]],
   ['gps_5fdata_5fsize',['GPS_DATA_SIZE',['../_g_p_s_8h.html#ae92e9017d3b8f421e54d6413350b4682',1,'GPS.h']]],
-  ['gpsdata',['GPSData',['../_g_p_s_8xc.html#a9d3c97defb40ad867ae04cb0c21782f3',1,'GPS.xc']]]
+  ['gps_5ffuncs_2ecpp',['GPS_Funcs.cpp',['../_g_p_s___funcs_8cpp.html',1,'']]],
+  ['gps_5ffuncs_2eh',['GPS_Funcs.h',['../_g_p_s___funcs_8h.html',1,'']]],
+  ['gpsdata',['GPSData',['../_g_p_s_8xc.html#a9d3c97defb40ad867ae04cb0c21782f3',1,'GPS.xc']]],
+  ['groll',['gRoll',['../_a_d_c___funcs_8cpp.html#a6c7cc06fabc2d36d9ab0e14547c56587',1,'ADC_Funcs.cpp']]],
+  ['gyaw',['gYaw',['../_a_d_c___funcs_8cpp.html#ad61fb288762863fdb02e0bb5006678d8',1,'ADC_Funcs.cpp']]],
+  ['gyro_5fx',['GYRO_X',['../_a_d_c_8h.html#a6fa3a770593198f52081c3d0f57c4f3e',1,'ADC.h']]],
+  ['gyro_5fy',['GYRO_Y',['../_a_d_c_8h.html#a61979b170cad36aca9f085f730a7d4b2',1,'ADC.h']]],
+  ['gyro_5fz',['GYRO_Z',['../_a_d_c_8h.html#ae6f0fb99646bbcdafcf8c8691a6bcafd',1,'ADC.h']]]
 ];

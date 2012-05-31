@@ -108,34 +108,45 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &quot;<a class="el" href="_a_d_c_8h_source.html">Sensors/ADC.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="uart__rx_8h_source.html">UART/RX/uart_rx.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="uart__rx__impl_8h_source.html">UART/RX/uart_rx_impl.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="uart__tx_8h_source.html">UART/TX/uart_tx.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="uart__tx__impl_8h_source.html">UART/TX/uart_tx_impl.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="_g_p_s_8h_source.html">Sensors/GPS.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="_magnetometer_8h_source.html">Sensors/Magnetometer.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="_g_p_s___funcs_8h_source.html">Sensors/GPS_Funcs.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="_a_d_c___funcs_8h_source.html">Sensors/ADC_Funcs.h</a>&quot;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for IMU.xc:</div>
 <div class="dyncontent">
 <div class="center"><img src="_i_m_u_8xc__incl.png" border="0" usemap="#_i_m_u_2src_2_i_m_u_8xc" alt=""/></div>
 <map name="_i_m_u_2src_2_i_m_u_8xc" id="_i_m_u_2src_2_i_m_u_8xc">
-<area shape="rect" id="node9" href="_i_m_u_8h.html" title="IMU.h" alt="" coords="212,80,268,107"/><area shape="rect" id="node11" href="_a_d_c_8h.html" title="Sensors/ADC.h" alt="" coords="292,80,404,107"/><area shape="rect" id="node13" href="uart__rx_8h.html" title="UART/RX/uart_rx.h" alt="" coords="435,155,565,181"/><area shape="rect" id="node15" href="uart__rx__impl_8h.html" title="UART/RX/uart_rx_impl.h" alt="" coords="479,80,641,107"/><area shape="rect" id="node18" href="_g_p_s_8h.html" title="Sensors/GPS.h" alt="" coords="666,80,779,107"/><area shape="rect" id="node20" href="_magnetometer_8h.html" title="Sensors/Magnetometer.h" alt="" coords="804,80,972,107"/><area shape="rect" id="node22" href="i2c_8h.html" title="../Libs/I2C/i2c.h" alt="" coords="739,155,852,181"/></map>
+<area shape="rect" id="node9" href="_i_m_u_8h.html" title="IMU.h" alt="" coords="230,80,286,107"/><area shape="rect" id="node11" href="_a_d_c_8h.html" title="Sensors/ADC.h" alt="" coords="310,80,422,107"/><area shape="rect" id="node13" href="uart__rx_8h.html" title="UART/RX/uart_rx.h" alt="" coords="435,155,566,181"/><area shape="rect" id="node15" href="uart__rx__impl_8h.html" title="UART/RX/uart_rx_impl.h" alt="" coords="497,80,659,107"/><area shape="rect" id="node18" href="uart__tx_8h.html" title="UART TX component." alt="" coords="691,155,819,181"/><area shape="rect" id="node20" href="uart__tx__impl_8h.html" title="UART/TX/uart_tx_impl.h" alt="" coords="734,80,894,107"/><area shape="rect" id="node23" href="_g_p_s_8h.html" title="Sensors/GPS.h" alt="" coords="919,80,1031,107"/><area shape="rect" id="node25" href="_magnetometer_8h.html" title="Sensors/Magnetometer.h" alt="" coords="1057,80,1225,107"/><area shape="rect" id="node32" href="_g_p_s___funcs_8h.html" title="Sensors/GPS_Funcs.h" alt="" coords="1249,80,1405,107"/><area shape="rect" id="node34" href="_a_d_c___funcs_8h.html" title="Sensors/ADC_Funcs.h" alt="" coords="1430,80,1585,107"/><area shape="rect" id="node27" href="i2c_8h.html" title="../Libs/I2C/i2c.h" alt="" coords="993,155,1106,181"/></map>
 </div>
 </div><table class="memberdecls">
 <tr><td colspan="2"><h2><a name="define-members"></a>
 Defines</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_m_u_8xc.html#a25f003de16c08a4888b69f619d70f427">ARRAY_SIZE</a>(a)&#160;&#160;&#160;(sizeof(a) / sizeof(a[0]))</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_m_u_8xc.html#a5824254b9ee809852f6b67dd76e22cf3">BIT_RATE</a>&#160;&#160;&#160;4800</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_m_u_8xc.html#aaf5d771ef7d566546d7efffa98f87812">GPS_BIT_RATE</a>&#160;&#160;&#160;4800</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_m_u_8xc.html#af14cdd56b9e83237bb3ddf26754615f4">SERVER_BIT_RATE</a>&#160;&#160;&#160;115200</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_m_u_8xc.html#a369ecd38b3ab077fc235f892354bb46f">BITS_PER_BYTE</a>&#160;&#160;&#160;8</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_m_u_8xc.html#a0b107cd8aa248d1f5ac233982dc7212c">SET_PARITY</a>&#160;&#160;&#160;2</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_m_u_8xc.html#ad0c3743efc15a1320478871dc92998bd">STOP_BIT</a>&#160;&#160;&#160;2</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_m_u_8xc.html#a101507e5cbe28c97ec46ca64a3d93525">PRINT_GPS</a>&#160;&#160;&#160;0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_m_u_8xc.html#aa2f42f5b7d2971d962acf68478407d3d">PRINT_MAG</a>&#160;&#160;&#160;0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_m_u_8xc.html#a398539f2bf106f4562d2f49bcbdbca8b">PRINT_ADC</a>&#160;&#160;&#160;1</td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_m_u_8xc.html#a5f6853df148c7342ba04c9587b0c8a31">testADC</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_m_u_8xc.html#a620be7ad7da30692ade4eaa8db99d968">testGPS</a> (chanend gps)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_m_u_8xc.html#a2f80b018a0acb05f7e55042609cb1ba4">testMagnetometer</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_m_u_8xc.html#a6e25557fcc3d1371c320d55db29f8dac">testAllWithServer</a> (chanend <a class="el" href="_i_m_u_8xc.html#ad2de7fea48245299eb705a38de2ae0d6">serverTx</a>)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_m_u_8xc.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
 <tr><td colspan="2"><h2><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_m_u_8xc.html#a8f440f04d06b29b189b8db6fec53fea6">baud_rate</a> = <a class="el" href="_i_m_u_8xc.html#a5824254b9ee809852f6b67dd76e22cf3">BIT_RATE</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_m_u_8xc.html#a6b740ef97077f767d1e548b189bf4d55">gps_baud_rate</a> = <a class="el" href="_i_m_u_8xc.html#aaf5d771ef7d566546d7efffa98f87812">GPS_BIT_RATE</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_m_u_8xc.html#a331161b144cf99a4112b96b4d6ec4287">server_baud_rate</a> = <a class="el" href="_i_m_u_8xc.html#af14cdd56b9e83237bb3ddf26754615f4">SERVER_BIT_RATE</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_a_d_c.html">ADC</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_m_u_8xc.html#a9b9a4a16a4bc2883f5fcb98cabc2b34b">adc</a> = { PORT_ADC_CS, PORT_ADC_MOSI, PORT_ADC_MISO, PORT_ADC_SCLK, XS1_CLKBLK_1, XS1_CLKBLK_2 }</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">buffered in&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_m_u_8xc.html#a7987df62616d8b7adb08ccba75d5de9d">port</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">out <a class="el" href="_i_m_u_8xc.html#a7987df62616d8b7adb08ccba75d5de9d">port</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_m_u_8xc.html#ad2de7fea48245299eb705a38de2ae0d6">serverTx</a> = PORT_COM1</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structr__i2c.html">r_i2c</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_m_u_8xc.html#a2cb7716f8ea5dd6cc9cedb7e65a28c82">magnetometer</a> = { PORT_MAG_SCL, PORT_MAG_SDA }</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
@@ -153,24 +164,11 @@ Description</h2>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define <a class="el" href="_i_m_u_8xc.html#a25f003de16c08a4888b69f619d70f427">ARRAY_SIZE</a></td>
+          <td class="memname">#define <a class="el" href="_g_p_s_8xc.html#a25f003de16c08a4888b69f619d70f427">ARRAY_SIZE</a></td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">a</td><td>)</td>
           <td>&#160;&#160;&#160;(sizeof(a) / sizeof(a[0]))</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a5824254b9ee809852f6b67dd76e22cf3"></a><!-- doxytag: member="IMU.xc::BIT_RATE" ref="a5824254b9ee809852f6b67dd76e22cf3" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define <a class="el" href="_i_m_u_8xc.html#a5824254b9ee809852f6b67dd76e22cf3">BIT_RATE</a>&#160;&#160;&#160;4800</td>
         </tr>
       </table>
 </div>
@@ -184,6 +182,71 @@ Description</h2>
       <table class="memname">
         <tr>
           <td class="memname">#define <a class="el" href="_i_m_u_8xc.html#a369ecd38b3ab077fc235f892354bb46f">BITS_PER_BYTE</a>&#160;&#160;&#160;8</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aaf5d771ef7d566546d7efffa98f87812"></a><!-- doxytag: member="IMU.xc::GPS_BIT_RATE" ref="aaf5d771ef7d566546d7efffa98f87812" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="_i_m_u_8xc.html#aaf5d771ef7d566546d7efffa98f87812">GPS_BIT_RATE</a>&#160;&#160;&#160;4800</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a398539f2bf106f4562d2f49bcbdbca8b"></a><!-- doxytag: member="IMU.xc::PRINT_ADC" ref="a398539f2bf106f4562d2f49bcbdbca8b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="_i_m_u_8xc.html#a398539f2bf106f4562d2f49bcbdbca8b">PRINT_ADC</a>&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a101507e5cbe28c97ec46ca64a3d93525"></a><!-- doxytag: member="IMU.xc::PRINT_GPS" ref="a101507e5cbe28c97ec46ca64a3d93525" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="_i_m_u_8xc.html#a101507e5cbe28c97ec46ca64a3d93525">PRINT_GPS</a>&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aa2f42f5b7d2971d962acf68478407d3d"></a><!-- doxytag: member="IMU.xc::PRINT_MAG" ref="aa2f42f5b7d2971d962acf68478407d3d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="_i_m_u_8xc.html#aa2f42f5b7d2971d962acf68478407d3d">PRINT_MAG</a>&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="af14cdd56b9e83237bb3ddf26754615f4"></a><!-- doxytag: member="IMU.xc::SERVER_BIT_RATE" ref="af14cdd56b9e83237bb3ddf26754615f4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="_i_m_u_8xc.html#af14cdd56b9e83237bb3ddf26754615f4">SERVER_BIT_RATE</a>&#160;&#160;&#160;115200</td>
         </tr>
       </table>
 </div>
@@ -250,6 +313,23 @@ Description</h2>
 
 </div>
 </div>
+<a class="anchor" id="a6e25557fcc3d1371c320d55db29f8dac"></a><!-- doxytag: member="IMU.xc::testAllWithServer" ref="a6e25557fcc3d1371c320d55db29f8dac" args="(chanend serverTx)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="_i_m_u_8xc.html#a6e25557fcc3d1371c320d55db29f8dac">testAllWithServer</a> </td>
+          <td>(</td>
+          <td class="paramtype">chanend&#160;</td>
+          <td class="paramname"><em>serverTx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a620be7ad7da30692ade4eaa8db99d968"></a><!-- doxytag: member="IMU.xc::testGPS" ref="a620be7ad7da30692ade4eaa8db99d968" args="(chanend gps)" -->
 <div class="memitem">
 <div class="memproto">
@@ -294,16 +374,15 @@ Description</h2>
       </table>
 </div>
 <div class="memdoc">
-<p>The <a class="el" href="struct_a_d_c.html">ADC</a> connected to the 3 Axis Gyros and 3 Axis Accelerometer Channels'respective data is define in the header file </p>
 
 </div>
 </div>
-<a class="anchor" id="a8f440f04d06b29b189b8db6fec53fea6"></a><!-- doxytag: member="IMU.xc::baud_rate" ref="a8f440f04d06b29b189b8db6fec53fea6" args="" -->
+<a class="anchor" id="a6b740ef97077f767d1e548b189bf4d55"></a><!-- doxytag: member="IMU.xc::gps_baud_rate" ref="a6b740ef97077f767d1e548b189bf4d55" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned <a class="el" href="_i_m_u_8xc.html#a8f440f04d06b29b189b8db6fec53fea6">baud_rate</a> = <a class="el" href="_i_m_u_8xc.html#a5824254b9ee809852f6b67dd76e22cf3">BIT_RATE</a></td>
+          <td class="memname">unsigned <a class="el" href="_i_m_u_8xc.html#a6b740ef97077f767d1e548b189bf4d55">gps_baud_rate</a> = <a class="el" href="_i_m_u_8xc.html#aaf5d771ef7d566546d7efffa98f87812">GPS_BIT_RATE</a></td>
         </tr>
       </table>
 </div>
@@ -321,7 +400,6 @@ Description</h2>
       </table>
 </div>
 <div class="memdoc">
-<p>I2C Ports for the Magnetometer </p>
 
 </div>
 </div>
@@ -335,7 +413,32 @@ Description</h2>
       </table>
 </div>
 <div class="memdoc">
-<p>RX from the GPS Module </p>
+
+</div>
+</div>
+<a class="anchor" id="a331161b144cf99a4112b96b4d6ec4287"></a><!-- doxytag: member="IMU.xc::server_baud_rate" ref="a331161b144cf99a4112b96b4d6ec4287" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned <a class="el" href="_i_m_u_8xc.html#a331161b144cf99a4112b96b4d6ec4287">server_baud_rate</a> = <a class="el" href="_i_m_u_8xc.html#af14cdd56b9e83237bb3ddf26754615f4">SERVER_BIT_RATE</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ad2de7fea48245299eb705a38de2ae0d6"></a><!-- doxytag: member="IMU.xc::serverTx" ref="ad2de7fea48245299eb705a38de2ae0d6" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">out <a class="el" href="_i_m_u_8xc.html#a7987df62616d8b7adb08ccba75d5de9d">port</a> <a class="el" href="_i_m_u_8xc.html#ad2de7fea48245299eb705a38de2ae0d6">serverTx</a> = PORT_COM1</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
 
 </div>
 </div>
@@ -359,7 +462,7 @@ Description</h2>
     <ul>
       <li class="navelem"><a class="el" href="_i_m_u_8xc.html">IMU.xc</a>      </li>
 
-    <li class="footer">Generated on Fri May 25 2012 14:55:17 for XMOS IMU by
+    <li class="footer">Generated on Wed May 30 2012 23:36:47 for XMOS IMU by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

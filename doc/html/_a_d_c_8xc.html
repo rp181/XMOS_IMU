@@ -94,26 +94,33 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div id="doc-content">
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">IMU/src/Sensors/ADC.xc File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;xs1.h&gt;</code><br/>
-<code>#include &quot;<a class="el" href="_a_d_c_8h_source.html">ADC.h</a>&quot;</code><br/>
 <code>#include &lt;xclib.h&gt;</code><br/>
+<code>#include &quot;<a class="el" href="_a_d_c_8h_source.html">ADC.h</a>&quot;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for ADC.xc:</div>
 <div class="dyncontent">
 <div class="center"><img src="_a_d_c_8xc__incl.png" border="0" usemap="#_i_m_u_2src_2_sensors_2_a_d_c_8xc" alt=""/></div>
 <map name="_i_m_u_2src_2_sensors_2_a_d_c_8xc" id="_i_m_u_2src_2_sensors_2_a_d_c_8xc">
-<area shape="rect" id="node5" href="_a_d_c_8h.html" title="ADC.h" alt="" coords="83,80,143,107"/></map>
+<area shape="rect" id="node7" href="_a_d_c_8h.html" title="ADC.h" alt="" coords="167,80,227,107"/></map>
 </div>
 </div><table class="memberdecls">
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_d_c_8xc.html#a0cbbe5f2546fcf9be2e3687d69d8d009">setSamplesForNormalizing</a> (int samples)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_d_c_8xc.html#aa9491c6e48d2a9dd5c78ae5b13ed9339">getSamplesForNormalizing</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_d_c_8xc.html#a666f402aeb25c3e1bdd52587d442d5ba">normalizeADCValues</a> (<a class="el" href="struct_a_d_c.html">ADC</a> &amp;<a class="el" href="_i_m_u_8xc.html#a9b9a4a16a4bc2883f5fcb98cabc2b34b">adc</a>)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_d_c_8xc.html#a221ba7afd0d0802886d1796ede1092a1">updateADCValues</a> (<a class="el" href="struct_a_d_c.html">ADC</a> &amp;<a class="el" href="_i_m_u_8xc.html#a9b9a4a16a4bc2883f5fcb98cabc2b34b">adc</a>)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_d_c_8xc.html#abc5294f0941ed525182cd2f532812272">configureADC</a> (<a class="el" href="struct_a_d_c.html">ADC</a> &amp;<a class="el" href="_i_m_u_8xc.html#a9b9a4a16a4bc2883f5fcb98cabc2b34b">adc</a>)</td></tr>
+<tr><td colspan="2"><h2><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_d_c_8xc.html#a0fe4e183a6420c603b4552a04d26c403">samplesForNormalize</a> = 5000</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><dl class="author"><dt><b>Author:</b></dt><dd>Phani Gaddipati &lt;<a href="mailto:phanigaddipati@yahoo.com">phanigaddipati@yahoo.com</a>&gt;<br/>
@@ -149,6 +156,63 @@ Description</h2>
 
 </div>
 </div>
+<a class="anchor" id="aa9491c6e48d2a9dd5c78ae5b13ed9339"></a><!-- doxytag: member="ADC.xc::getSamplesForNormalizing" ref="aa9491c6e48d2a9dd5c78ae5b13ed9339" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="_a_d_c_8xc.html#aa9491c6e48d2a9dd5c78ae5b13ed9339">getSamplesForNormalizing</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a666f402aeb25c3e1bdd52587d442d5ba"></a><!-- doxytag: member="ADC.xc::normalizeADCValues" ref="a666f402aeb25c3e1bdd52587d442d5ba" args="(ADC &amp;adc)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="_a_d_c_8xc.html#a666f402aeb25c3e1bdd52587d442d5ba">normalizeADCValues</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_a_d_c.html">ADC</a> &amp;&#160;</td>
+          <td class="paramname"><em>adc</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Average samplesForNormalize samples to offset the <a class="el" href="struct_a_d_c.html">ADC</a> values </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">adc</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a0cbbe5f2546fcf9be2e3687d69d8d009"></a><!-- doxytag: member="ADC.xc::setSamplesForNormalizing" ref="a0cbbe5f2546fcf9be2e3687d69d8d009" args="(int samples)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="_a_d_c_8xc.html#a0cbbe5f2546fcf9be2e3687d69d8d009">setSamplesForNormalizing</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>samples</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a221ba7afd0d0802886d1796ede1092a1"></a><!-- doxytag: member="ADC.xc::updateADCValues" ref="a221ba7afd0d0802886d1796ede1092a1" args="(ADC &amp;adc)" -->
 <div class="memitem">
 <div class="memproto">
@@ -173,6 +237,20 @@ Description</h2>
 
 </div>
 </div>
+<hr/><h2>Variable Documentation</h2>
+<a class="anchor" id="a0fe4e183a6420c603b4552a04d26c403"></a><!-- doxytag: member="ADC.xc::samplesForNormalize" ref="a0fe4e183a6420c603b4552a04d26c403" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="_a_d_c_8xc.html#a0fe4e183a6420c603b4552a04d26c403">samplesForNormalize</a> = 5000</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
 </div>
 <!-- window showing the filter options -->
@@ -193,7 +271,7 @@ Description</h2>
     <ul>
       <li class="navelem"><a class="el" href="_a_d_c_8xc.html">ADC.xc</a>      </li>
 
-    <li class="footer">Generated on Fri May 25 2012 14:55:17 for XMOS IMU by
+    <li class="footer">Generated on Wed May 30 2012 23:36:47 for XMOS IMU by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

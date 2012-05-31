@@ -2,6 +2,8 @@ var files =
 [
     [ "IMU/src/IMU.h", "_i_m_u_8h.html", "_i_m_u_8h" ],
     [ "IMU/src/IMU.xc", "_i_m_u_8xc.html", "_i_m_u_8xc" ],
+    [ "IMU/src/Server.h", "_server_8h.html", null ],
+    [ "IMU/src/Server.xc", "_server_8xc.html", null ],
     [ "IMU/src/Libs/I2C/i2c.h", "i2c_8h.html", "i2c_8h" ],
     [ "IMU/src/Libs/I2C/i2c.xc", "i2c_8xc.html", "i2c_8xc" ],
     [ "IMU/src/Libs/SPI/spi_master.h", "spi__master_8h.html", "spi__master_8h" ],
@@ -18,8 +20,12 @@ var files =
     [ "IMU/src/Libs/UART/TX/uart_tx_impl.xc", "uart__tx__impl_8xc.html", "uart__tx__impl_8xc" ],
     [ "IMU/src/Sensors/ADC.h", "_a_d_c_8h.html", "_a_d_c_8h" ],
     [ "IMU/src/Sensors/ADC.xc", "_a_d_c_8xc.html", "_a_d_c_8xc" ],
+    [ "IMU/src/Sensors/ADC_Funcs.cpp", "_a_d_c___funcs_8cpp.html", "_a_d_c___funcs_8cpp" ],
+    [ "IMU/src/Sensors/ADC_Funcs.h", "_a_d_c___funcs_8h.html", "_a_d_c___funcs_8h" ],
     [ "IMU/src/Sensors/GPS.h", "_g_p_s_8h.html", "_g_p_s_8h" ],
     [ "IMU/src/Sensors/GPS.xc", "_g_p_s_8xc.html", "_g_p_s_8xc" ],
+    [ "IMU/src/Sensors/GPS_Funcs.cpp", "_g_p_s___funcs_8cpp.html", "_g_p_s___funcs_8cpp" ],
+    [ "IMU/src/Sensors/GPS_Funcs.h", "_g_p_s___funcs_8h.html", "_g_p_s___funcs_8h" ],
     [ "IMU/src/Sensors/Magnetometer.h", "_magnetometer_8h.html", null ],
     [ "IMU/src/Sensors/Magnetometer.xc", "_magnetometer_8xc.html", "_magnetometer_8xc" ]
 ];

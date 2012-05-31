@@ -7,5 +7,6 @@ var searchData=
   ['channel_5fgyro_5fy',['CHANNEL_GYRO_Y',['../_i_m_u_8h.html#a2e60aab3cd0cf595501347a5709ab682',1,'IMU.h']]],
   ['channel_5fgyro_5fz',['CHANNEL_GYRO_Z',['../_i_m_u_8h.html#a74323512866332b5f405ec4eba4dec14',1,'IMU.h']]],
   ['configureadc',['configureADC',['../_a_d_c_8h.html#abc5294f0941ed525182cd2f532812272',1,'configureADC(ADC &amp;adc):&#160;ADC.xc'],['../_a_d_c_8xc.html#abc5294f0941ed525182cd2f532812272',1,'configureADC(ADC &amp;adc):&#160;ADC.xc']]],
+  ['counts_5fdegree',['COUNTS_DEGREE',['../_a_d_c___funcs_8cpp.html#a406f7baa61f34d317b67041cb5368437',1,'ADC_Funcs.cpp']]],
   ['cs',['CS',['../struct_a_d_c.html#a6d996edb4a3b9bf44790c8d12709b0f2',1,'ADC']]]
 ];

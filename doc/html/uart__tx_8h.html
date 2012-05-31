@@ -108,7 +108,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="uart__tx_8h__dep__incl.png" border="0" usemap="#_i_m_u_2src_2_libs_2_u_a_r_t_2_t_x_2uart__tx_8hdep" alt=""/></div>
 <map name="_i_m_u_2src_2_libs_2_u_a_r_t_2_t_x_2uart__tx_8hdep" id="_i_m_u_2src_2_libs_2_u_a_r_t_2_t_x_2uart__tx_8hdep">
-<area shape="rect" id="node3" href="uart__tx__impl_8h.html" title="IMU/src/Libs/UART/TX/uart_tx_impl.h" alt="" coords="5,80,243,107"/><area shape="rect" id="node5" href="uart__tx_8xc.html" title="IMU/src/Libs/UART/TX/uart_tx.xc" alt="" coords="95,155,308,181"/><area shape="rect" id="node8" href="uart__tx__impl_8xc.html" title="IMU/src/Libs/UART/TX/uart_tx_impl.xc" alt="" coords="318,80,561,107"/></map>
+<area shape="rect" id="node3" href="_i_m_u_8xc.html" title="IMU/src/IMU.xc" alt="" coords="5,155,117,181"/><area shape="rect" id="node5" href="uart__tx__impl_8h.html" title="IMU/src/Libs/UART/TX/uart_tx_impl.h" alt="" coords="68,80,305,107"/><area shape="rect" id="node8" href="uart__tx_8xc.html" title="IMU/src/Libs/UART/TX/uart_tx.xc" alt="" coords="204,155,417,181"/><area shape="rect" id="node11" href="uart__tx__impl_8xc.html" title="IMU/src/Libs/UART/TX/uart_tx_impl.xc" alt="" coords="381,80,624,107"/></map>
 </div>
 </div>
 <p><a href="uart__tx_8h_source.html">Go to the source code of this file.</a></p>
@@ -121,9 +121,9 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart__tx_8h.html#acf5d06ccd02506a080758c96c69f4893">uart_tx</a> (out <a class="el" href="_i_m_u_8xc.html#a7987df62616d8b7adb08ccba75d5de9d">port</a> txd, unsigned char buffer[], unsigned buffer_size, unsigned <a class="el" href="_i_m_u_8xc.html#a8f440f04d06b29b189b8db6fec53fea6">baud_rate</a>, unsigned bits, enum <a class="el" href="uart__tx_8h.html#aefd5ff809cd2554cd28693cee3b1cb75">uart_tx_parity</a> parity, unsigned stop_bits, chanend c)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart__tx_8h.html#acf5d06ccd02506a080758c96c69f4893">uart_tx</a> (out <a class="el" href="_i_m_u_8xc.html#a7987df62616d8b7adb08ccba75d5de9d">port</a> txd, unsigned char buffer[], unsigned buffer_size, unsigned baud_rate, unsigned bits, enum <a class="el" href="uart__tx_8h.html#aefd5ff809cd2554cd28693cee3b1cb75">uart_tx_parity</a> parity, unsigned stop_bits, chanend c)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart__tx_8h.html#a0420242b6458fecd553409c5fc761b5c">uart_tx_send_byte</a> (chanend c, unsigned char byte)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart__tx_8h.html#a7bde9cf80d100020159a35e5fd5e1ac8">uart_tx_set_baud_rate</a> (chanend c, unsigned <a class="el" href="_i_m_u_8xc.html#a8f440f04d06b29b189b8db6fec53fea6">baud_rate</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart__tx_8h.html#a7bde9cf80d100020159a35e5fd5e1ac8">uart_tx_set_baud_rate</a> (chanend c, unsigned baud_rate)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart__tx_8h.html#a82de9bc0d94716a34cf0a761189ff9ea">uart_tx_set_parity</a> (chanend c, enum <a class="el" href="uart__tx_8h.html#aefd5ff809cd2554cd28693cee3b1cb75">uart_tx_parity</a> parity)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart__tx_8h.html#abd01939cdcbb7f4110c1bb15de870d92">uart_tx_set_stop_bits</a> (chanend c, unsigned stop_bits)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart__tx_8h.html#abd62aeeb40280698ba7a96a1ca17d1aa">uart_tx_set_bits_per_byte</a> (chanend c, unsigned bits)</td></tr>
@@ -407,7 +407,7 @@ Functions</h2></td></tr>
     <ul>
       <li class="navelem"><a class="el" href="uart__tx_8h.html">uart_tx.h</a>      </li>
 
-    <li class="footer">Generated on Fri May 25 2012 14:55:17 for XMOS IMU by
+    <li class="footer">Generated on Wed May 30 2012 23:36:47 for XMOS IMU by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

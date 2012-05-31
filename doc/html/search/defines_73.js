@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['server_5fbit_5frate',['SERVER_BIT_RATE',['../_i_m_u_8xc.html#af14cdd56b9e83237bb3ddf26754615f4',1,'IMU.xc']]],
   ['set_5fparity',['SET_PARITY',['../_i_m_u_8xc.html#a0b107cd8aa248d1f5ac233982dc7212c',1,'IMU.xc']]],
   ['spi_5fmaster_5fmode',['SPI_MASTER_MODE',['../spi__master_8h.html#acaf98f1876f8d084f0136bf7e8c2f8d4',1,'spi_master.h']]],
   ['spi_5fslave_5fmode',['SPI_SLAVE_MODE',['../spi__slave_8h.html#a6937829c8e8c6b3907faed0da21faa6c',1,'spi_slave.h']]],

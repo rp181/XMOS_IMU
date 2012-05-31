@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['baud_5frate',['baud_rate',['../structuart__rx__options.html#a7bfddd6a25ab19eff86c8784a246be86',1,'uart_rx_options::baud_rate()'],['../structuart__tx__options.html#af61c11c3d169d05b75d95cb10c602b36',1,'uart_tx_options::baud_rate()'],['../_i_m_u_8xc.html#a8f440f04d06b29b189b8db6fec53fea6',1,'baud_rate():&#160;IMU.xc']]],
+  ['baud_5frate',['baud_rate',['../structuart__rx__options.html#a7bfddd6a25ab19eff86c8784a246be86',1,'uart_rx_options::baud_rate()'],['../structuart__tx__options.html#af61c11c3d169d05b75d95cb10c602b36',1,'uart_tx_options::baud_rate()']]],
   ['bit_5ftime',['bit_time',['../structuart__rx__options.html#a342dd57aede49d697f9ff6cb4e196d47',1,'uart_rx_options']]],
   ['bits_5fper_5fbyte',['bits_per_byte',['../structuart__rx__options.html#ace4fd4c2e6465e2b3a15cc021e396759',1,'uart_rx_options::bits_per_byte()'],['../structuart__tx__options.html#ae4047bb02c4792a3a0d1e4b4bb2a75c6',1,'uart_tx_options::bits_per_byte()']]],
   ['blk',['blk',['../structspi__slave__interface.html#a1eed88568441a7d2bc857b539e0f51f9',1,'spi_slave_interface']]],

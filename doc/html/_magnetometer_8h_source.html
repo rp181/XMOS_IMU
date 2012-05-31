@@ -103,21 +103,34 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00013"></a>00013 <span class="preprocessor">#ifndef MAGNETOMETER_H_</span>
 <a name="l00014"></a>00014 <span class="preprocessor"></span><span class="preprocessor">#define MAGNETOMETER_H_</span>
 <a name="l00015"></a>00015 <span class="preprocessor"></span>
-<a name="l00016"></a>00016 <span class="keywordtype">void</span> <a class="code" href="_magnetometer_8xc.html#a8b1117ccb210433a920bf099b9465589">readMagnetometer</a>(<span class="keywordtype">short</span> values[], REFERENCE_PARAM(<span class="keyword">struct</span> <a class="code" href="structr__i2c.html">r_i2c</a>,i2c));
-<a name="l00017"></a>00017 <span class="keywordtype">void</span> <a class="code" href="_magnetometer_8xc.html#a9b25e8c3e23ac31660146d0b7638b88a">initMagnetometer</a>(REFERENCE_PARAM(<span class="keyword">struct</span> <a class="code" href="structr__i2c.html">r_i2c</a>,i2c));
-<a name="l00018"></a>00018 
-<a name="l00019"></a>00019 <span class="preprocessor">#define ADDRESS_7               0x1E</span>
-<a name="l00020"></a>00020 <span class="preprocessor"></span><span class="preprocessor">#define ADDRESS_8_READ  0x3D</span>
-<a name="l00021"></a>00021 <span class="preprocessor"></span><span class="preprocessor">#define ADDRESS_8_WRITE 0x3C</span>
-<a name="l00022"></a>00022 <span class="preprocessor"></span><span class="preprocessor">#define ADDRESS_MODE    0x02</span>
-<a name="l00023"></a>00023 <span class="preprocessor"></span><span class="preprocessor">#define ADDRESS_XA              0x03</span>
-<a name="l00024"></a>00024 <span class="preprocessor"></span><span class="preprocessor">#define ADDRESS_XB              0x04</span>
-<a name="l00025"></a>00025 <span class="preprocessor"></span><span class="preprocessor">#define ADDRESS_YA              0x05</span>
-<a name="l00026"></a>00026 <span class="preprocessor"></span><span class="preprocessor">#define ADDRESS_YB              0x06</span>
-<a name="l00027"></a>00027 <span class="preprocessor"></span><span class="preprocessor">#define ADDRESS_ZA              0x07</span>
-<a name="l00028"></a>00028 <span class="preprocessor"></span><span class="preprocessor">#define ADDRESS_ZB              0x08</span>
-<a name="l00029"></a>00029 <span class="preprocessor"></span>
-<a name="l00030"></a>00030 <span class="preprocessor">#endif </span><span class="comment">/* MAGNETOMETER_H_ */</span>
+<a name="l00016"></a>00016 <span class="preprocessor">#define ADDRESS_7                               0x1E</span>
+<a name="l00017"></a>00017 <span class="preprocessor"></span><span class="preprocessor">#define ADDRESS_8_READ                  0x3D</span>
+<a name="l00018"></a>00018 <span class="preprocessor"></span><span class="preprocessor">#define ADDRESS_8_WRITE                 0x3C</span>
+<a name="l00019"></a>00019 <span class="preprocessor"></span><span class="preprocessor">#define ADDRESS_CONFIGURATION_1 0x00</span>
+<a name="l00020"></a>00020 <span class="preprocessor"></span><span class="preprocessor">#define ADDRESS_CONFIGURATION_2 0x01</span>
+<a name="l00021"></a>00021 <span class="preprocessor"></span><span class="preprocessor">#define ADDRESS_MODE                    0x02</span>
+<a name="l00022"></a>00022 <span class="preprocessor"></span><span class="preprocessor">#define ADDRESS_XA                              0x03</span>
+<a name="l00023"></a>00023 <span class="preprocessor"></span><span class="preprocessor">#define ADDRESS_XB                              0x04</span>
+<a name="l00024"></a>00024 <span class="preprocessor"></span><span class="preprocessor">#define ADDRESS_YA                              0x05</span>
+<a name="l00025"></a>00025 <span class="preprocessor"></span><span class="preprocessor">#define ADDRESS_YB                              0x06</span>
+<a name="l00026"></a>00026 <span class="preprocessor"></span><span class="preprocessor">#define ADDRESS_ZA                              0x07</span>
+<a name="l00027"></a>00027 <span class="preprocessor"></span><span class="preprocessor">#define ADDRESS_ZB                              0x08</span>
+<a name="l00028"></a>00028 <span class="preprocessor"></span>
+<a name="l00029"></a>00029 <span class="preprocessor">#define GAIN_07                                 0b00000000      // (+/-) 0.7</span>
+<a name="l00030"></a>00030 <span class="preprocessor"></span><span class="preprocessor">#define GAIN_1                                  0b00100000      // (+/-) 1.0</span>
+<a name="l00031"></a>00031 <span class="preprocessor"></span><span class="preprocessor">#define GAIN_15                                 0b01000000      // (+/-) 1.5</span>
+<a name="l00032"></a>00032 <span class="preprocessor"></span><span class="preprocessor">#define GAIN_2                                  0b01100000      // (+/-) 2.0</span>
+<a name="l00033"></a>00033 <span class="preprocessor"></span><span class="preprocessor">#define GAIN_32                                 0b10000000      // (+/-) 3.2</span>
+<a name="l00034"></a>00034 <span class="preprocessor"></span><span class="preprocessor">#define GAIN_38                                 0b10100000      // (+/-) 3.8</span>
+<a name="l00035"></a>00035 <span class="preprocessor"></span><span class="preprocessor">#define GAIN_45                                 0b11000000      // (+/-) 4.5</span>
+<a name="l00036"></a>00036 <span class="preprocessor"></span>
+<a name="l00042"></a>00042 <span class="keywordtype">void</span> <a class="code" href="_magnetometer_8xc.html#a8b1117ccb210433a920bf099b9465589">readMagnetometer</a>(<span class="keywordtype">short</span> values[], REFERENCE_PARAM(<span class="keyword">struct</span> <a class="code" href="structr__i2c.html">r_i2c</a>,i2c));
+<a name="l00043"></a>00043 
+<a name="l00048"></a>00048 <span class="keywordtype">void</span> <a class="code" href="_magnetometer_8xc.html#a9b25e8c3e23ac31660146d0b7638b88a">initMagnetometer</a>(REFERENCE_PARAM(<span class="keyword">struct</span> <a class="code" href="structr__i2c.html">r_i2c</a>,i2c));
+<a name="l00049"></a>00049 
+<a name="l00054"></a>00054 <span class="keywordtype">void</span> <a class="code" href="_magnetometer_8xc.html#a42a7f85ad79427b4c3c589177f96dd2c">setMagnetometerGain</a>(<span class="keywordtype">char</span> gain, REFERENCE_PARAM(<span class="keyword">struct</span> <a class="code" href="structr__i2c.html">r_i2c</a>,i2c));
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056 <span class="preprocessor">#endif </span><span class="comment">/* MAGNETOMETER_H_ */</span>
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->
@@ -138,7 +151,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul>
       <li class="navelem"><a class="el" href="_magnetometer_8h.html">Magnetometer.h</a>      </li>
 
-    <li class="footer">Generated on Fri May 25 2012 14:55:17 for XMOS IMU by
+    <li class="footer">Generated on Wed May 30 2012 23:36:47 for XMOS IMU by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

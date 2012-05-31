@@ -1,3 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$uart__tx_8xc.html" title="IMU/src/Libs/UART/TX/uart_tx.xc" alt="" coords="17,80,231,107"/>
+<area shape="rect" id="node3" href="$_i_m_u_8xc.html" title="IMU/src/IMU.xc" alt="" coords="5,80,117,107"/>
+<area shape="rect" id="node5" href="$uart__tx_8xc.html" title="IMU/src/Libs/UART/TX/uart_tx.xc" alt="" coords="141,80,355,107"/>
 </map>

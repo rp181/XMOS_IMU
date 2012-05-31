@@ -113,6 +113,7 @@ Include dependency graph for Magnetometer.xc:</div>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_magnetometer_8xc.html#a9b25e8c3e23ac31660146d0b7638b88a">initMagnetometer</a> (REFERENCE_PARAM(struct <a class="el" href="structr__i2c.html">r_i2c</a>, i2c))</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_magnetometer_8xc.html#a42a7f85ad79427b4c3c589177f96dd2c">setMagnetometerGain</a> (char gain, REFERENCE_PARAM(struct <a class="el" href="structr__i2c.html">r_i2c</a>, i2c))</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_magnetometer_8xc.html#a8b1117ccb210433a920bf099b9465589">readMagnetometer</a> (short values[], REFERENCE_PARAM(struct <a class="el" href="structr__i2c.html">r_i2c</a>, i2c))</td></tr>
 <tr><td colspan="2"><h2><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -143,6 +144,13 @@ Description</h2>
       </table>
 </div>
 <div class="memdoc">
+<p>Initialize the I2C prots, as well as the magnetometer </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">the</td><td>i2c ports </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -170,6 +178,48 @@ Description</h2>
       </table>
 </div>
 <div class="memdoc">
+<p>Read the magnetometer registers for the most recent heading data </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">values</td><td>the array for the values to be stored in </td></tr>
+    <tr><td class="paramname">i2c</td><td>the i2c lines the magnetometer is on </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a42a7f85ad79427b4c3c589177f96dd2c"></a><!-- doxytag: member="Magnetometer.xc::setMagnetometerGain" ref="a42a7f85ad79427b4c3c589177f96dd2c" args="(char gain, REFERENCE_PARAM(struct r_i2c, i2c))" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="_magnetometer_8xc.html#a42a7f85ad79427b4c3c589177f96dd2c">setMagnetometerGain</a> </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>gain</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">REFERENCE_PARAM(struct <a class="el" href="structr__i2c.html">r_i2c</a>, i2c)&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Set the magnetometer gain (as defined by the header file) </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gain</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -220,7 +270,7 @@ Description</h2>
     <ul>
       <li class="navelem"><a class="el" href="_magnetometer_8xc.html">Magnetometer.xc</a>      </li>
 
-    <li class="footer">Generated on Fri May 25 2012 14:55:17 for XMOS IMU by
+    <li class="footer">Generated on Wed May 30 2012 23:36:47 for XMOS IMU by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

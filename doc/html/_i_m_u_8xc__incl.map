@@ -1,9 +1,13 @@
 <map id="G" name="G">
-<area shape="rect" id="node9" href="$_i_m_u_8h.html" title="IMU.h" alt="" coords="212,80,268,107"/>
-<area shape="rect" id="node11" href="$_a_d_c_8h.html" title="Sensors/ADC.h" alt="" coords="292,80,404,107"/>
-<area shape="rect" id="node13" href="$uart__rx_8h.html" title="UART/RX/uart_rx.h" alt="" coords="435,155,565,181"/>
-<area shape="rect" id="node15" href="$uart__rx__impl_8h.html" title="UART/RX/uart_rx_impl.h" alt="" coords="479,80,641,107"/>
-<area shape="rect" id="node18" href="$_g_p_s_8h.html" title="Sensors/GPS.h" alt="" coords="666,80,779,107"/>
-<area shape="rect" id="node20" href="$_magnetometer_8h.html" title="Sensors/Magnetometer.h" alt="" coords="804,80,972,107"/>
-<area shape="rect" id="node22" href="$i2c_8h.html" title="../Libs/I2C/i2c.h" alt="" coords="739,155,852,181"/>
+<area shape="rect" id="node9" href="$_i_m_u_8h.html" title="IMU.h" alt="" coords="230,80,286,107"/>
+<area shape="rect" id="node11" href="$_a_d_c_8h.html" title="Sensors/ADC.h" alt="" coords="310,80,422,107"/>
+<area shape="rect" id="node13" href="$uart__rx_8h.html" title="UART/RX/uart_rx.h" alt="" coords="435,155,566,181"/>
+<area shape="rect" id="node15" href="$uart__rx__impl_8h.html" title="UART/RX/uart_rx_impl.h" alt="" coords="497,80,659,107"/>
+<area shape="rect" id="node18" href="$uart__tx_8h.html" title="UART TX component." alt="" coords="691,155,819,181"/>
+<area shape="rect" id="node20" href="$uart__tx__impl_8h.html" title="UART/TX/uart_tx_impl.h" alt="" coords="734,80,894,107"/>
+<area shape="rect" id="node23" href="$_g_p_s_8h.html" title="Sensors/GPS.h" alt="" coords="919,80,1031,107"/>
+<area shape="rect" id="node25" href="$_magnetometer_8h.html" title="Sensors/Magnetometer.h" alt="" coords="1057,80,1225,107"/>
+<area shape="rect" id="node32" href="$_g_p_s___funcs_8h.html" title="Sensors/GPS_Funcs.h" alt="" coords="1249,80,1405,107"/>
+<area shape="rect" id="node34" href="$_a_d_c___funcs_8h.html" title="Sensors/ADC_Funcs.h" alt="" coords="1430,80,1585,107"/>
+<area shape="rect" id="node27" href="$i2c_8h.html" title="../Libs/I2C/i2c.h" alt="" coords="993,155,1106,181"/>
 </map>

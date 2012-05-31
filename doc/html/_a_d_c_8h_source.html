@@ -101,21 +101,39 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00011"></a>00011 <span class="preprocessor">#ifndef ADC_H_</span>
 <a name="l00012"></a>00012 <span class="preprocessor"></span><span class="preprocessor">#define ADC_H_</span>
 <a name="l00013"></a>00013 <span class="preprocessor"></span>
-<a name="l00024"></a><a class="code" href="struct_a_d_c.html">00024</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_a_d_c.html">ADC</a> {
-<a name="l00025"></a><a class="code" href="struct_a_d_c.html#a6d996edb4a3b9bf44790c8d12709b0f2">00025</a>         out <a class="code" href="struct_a_d_c.html#a39aa207447944c80cacc28d153d4696b">port</a> <a class="code" href="struct_a_d_c.html#a6d996edb4a3b9bf44790c8d12709b0f2">CS</a>;
-<a name="l00026"></a><a class="code" href="struct_a_d_c.html#a1e6956e0a92c35d7d6e11574a60e454b">00026</a>         out <a class="code" href="struct_a_d_c.html#a39aa207447944c80cacc28d153d4696b">port</a> <a class="code" href="struct_a_d_c.html#a1e6956e0a92c35d7d6e11574a60e454b">MOSI</a>;
-<a name="l00027"></a><a class="code" href="struct_a_d_c.html#a39aa207447944c80cacc28d153d4696b">00027</a>         in buffered <a class="code" href="struct_a_d_c.html#a39aa207447944c80cacc28d153d4696b">port</a>:32 MISO;
-<a name="l00028"></a><a class="code" href="struct_a_d_c.html#af224edb1cabe8fa6636ba9792f13303f">00028</a>         out buffered <a class="code" href="struct_a_d_c.html#a39aa207447944c80cacc28d153d4696b">port</a>:8 SCLK;
-<a name="l00029"></a><a class="code" href="struct_a_d_c.html#aa3ae3b877dc2f6bf3a8b53a75fc1f7b4">00029</a>         clock <a class="code" href="struct_a_d_c.html#aa3ae3b877dc2f6bf3a8b53a75fc1f7b4">blk1</a>;
-<a name="l00030"></a><a class="code" href="struct_a_d_c.html#a9ff5c42019973bf014ec7a4766e869dd">00030</a>         clock <a class="code" href="struct_a_d_c.html#a9ff5c42019973bf014ec7a4766e869dd">blk2</a>;
-<a name="l00031"></a><a class="code" href="struct_a_d_c.html#a3adf34e77dd66d365d232def649f7235">00031</a>         <span class="keywordtype">int</span> <a class="code" href="struct_a_d_c.html#a3adf34e77dd66d365d232def649f7235">adcValues</a>[8];
-<a name="l00032"></a>00032 } <a class="code" href="_a_d_c_8h.html#a4baad59f54d755b37fdfb4caa984e612">ADC</a>;
-<a name="l00033"></a>00033 
-<a name="l00042"></a>00042 <span class="keywordtype">void</span> <a class="code" href="_a_d_c_8h.html#abc5294f0941ed525182cd2f532812272">configureADC</a>(<a class="code" href="struct_a_d_c.html">ADC</a> &amp;<a class="code" href="_i_m_u_8xc.html#a9b9a4a16a4bc2883f5fcb98cabc2b34b">adc</a>);
-<a name="l00043"></a>00043 
-<a name="l00049"></a>00049 <span class="keywordtype">void</span> <a class="code" href="_a_d_c_8h.html#a221ba7afd0d0802886d1796ede1092a1">updateADCValues</a>(<a class="code" href="struct_a_d_c.html">ADC</a> &amp;<a class="code" href="_i_m_u_8xc.html#a9b9a4a16a4bc2883f5fcb98cabc2b34b">adc</a>);
-<a name="l00050"></a>00050 
-<a name="l00051"></a>00051 <span class="preprocessor">#endif </span><span class="comment">/* ADC_H_ */</span>
+<a name="l00014"></a><a class="code" href="_a_d_c_8h.html#af4cc2866af9a3674feedf15a2bb2b540">00014</a> <span class="preprocessor">#define ACCEL_X 4</span>
+<a name="l00015"></a><a class="code" href="_a_d_c_8h.html#a73df2dcbe32c4a51551b34034093c37f">00015</a> <span class="preprocessor"></span><span class="preprocessor">#define ACCEL_Y 5</span>
+<a name="l00016"></a><a class="code" href="_a_d_c_8h.html#a1e1de74892d5fa9c2fc21bcc6fd50618">00016</a> <span class="preprocessor"></span><span class="preprocessor">#define ACCEL_Z 3</span>
+<a name="l00017"></a><a class="code" href="_a_d_c_8h.html#a6fa3a770593198f52081c3d0f57c4f3e">00017</a> <span class="preprocessor"></span><span class="preprocessor">#define GYRO_X 1</span>
+<a name="l00018"></a><a class="code" href="_a_d_c_8h.html#a61979b170cad36aca9f085f730a7d4b2">00018</a> <span class="preprocessor"></span><span class="preprocessor">#define GYRO_Y 2</span>
+<a name="l00019"></a><a class="code" href="_a_d_c_8h.html#ae6f0fb99646bbcdafcf8c8691a6bcafd">00019</a> <span class="preprocessor"></span><span class="preprocessor">#define GYRO_Z 0</span>
+<a name="l00020"></a>00020 <span class="preprocessor"></span>
+<a name="l00021"></a><a class="code" href="_a_d_c_8h.html#aaf6b22b89bb364988f4882030a309a99">00021</a> <span class="preprocessor">#define X_OFFSET 947</span>
+<a name="l00022"></a><a class="code" href="_a_d_c_8h.html#aff6396abd8dad0f793f1a4333682a2be">00022</a> <span class="preprocessor"></span><span class="preprocessor">#define Y_OFFSET 1372</span>
+<a name="l00023"></a><a class="code" href="_a_d_c_8h.html#a6f842c885a6fa845a3a93012975caa5d">00023</a> <span class="preprocessor"></span><span class="preprocessor">#define Z_OFFSET 1820</span>
+<a name="l00024"></a>00024 <span class="preprocessor"></span>
+<a name="l00035"></a><a class="code" href="struct_a_d_c.html">00035</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_a_d_c.html">ADC</a> {
+<a name="l00036"></a><a class="code" href="struct_a_d_c.html#a6d996edb4a3b9bf44790c8d12709b0f2">00036</a>         out <a class="code" href="struct_a_d_c.html#a39aa207447944c80cacc28d153d4696b">port</a> <a class="code" href="struct_a_d_c.html#a6d996edb4a3b9bf44790c8d12709b0f2">CS</a>;
+<a name="l00037"></a><a class="code" href="struct_a_d_c.html#a1e6956e0a92c35d7d6e11574a60e454b">00037</a>         out <a class="code" href="struct_a_d_c.html#a39aa207447944c80cacc28d153d4696b">port</a> <a class="code" href="struct_a_d_c.html#a1e6956e0a92c35d7d6e11574a60e454b">MOSI</a>;
+<a name="l00038"></a><a class="code" href="struct_a_d_c.html#a39aa207447944c80cacc28d153d4696b">00038</a>         in buffered <a class="code" href="struct_a_d_c.html#a39aa207447944c80cacc28d153d4696b">port</a>:32 MISO;
+<a name="l00039"></a><a class="code" href="struct_a_d_c.html#af224edb1cabe8fa6636ba9792f13303f">00039</a>         out buffered <a class="code" href="struct_a_d_c.html#a39aa207447944c80cacc28d153d4696b">port</a>:8 SCLK;
+<a name="l00040"></a><a class="code" href="struct_a_d_c.html#aa3ae3b877dc2f6bf3a8b53a75fc1f7b4">00040</a>         clock <a class="code" href="struct_a_d_c.html#aa3ae3b877dc2f6bf3a8b53a75fc1f7b4">blk1</a>;
+<a name="l00041"></a><a class="code" href="struct_a_d_c.html#a9ff5c42019973bf014ec7a4766e869dd">00041</a>         clock <a class="code" href="struct_a_d_c.html#a9ff5c42019973bf014ec7a4766e869dd">blk2</a>;
+<a name="l00042"></a><a class="code" href="struct_a_d_c.html#a3adf34e77dd66d365d232def649f7235">00042</a>         <span class="keywordtype">int</span> <a class="code" href="struct_a_d_c.html#a3adf34e77dd66d365d232def649f7235">adcValues</a>[8];
+<a name="l00043"></a><a class="code" href="struct_a_d_c.html#adc9d2fb56c1d0d637ad40f2dd7c33a89">00043</a>         <span class="keywordtype">int</span> <a class="code" href="struct_a_d_c.html#adc9d2fb56c1d0d637ad40f2dd7c33a89">rawAdcValues</a>[8];
+<a name="l00044"></a><a class="code" href="struct_a_d_c.html#a501346a7b71b00ea404044da648beddd">00044</a>         <span class="keywordtype">int</span> <a class="code" href="struct_a_d_c.html#a501346a7b71b00ea404044da648beddd">offsets</a>[8];
+<a name="l00045"></a>00045 } <a class="code" href="_a_d_c_8h.html#a4baad59f54d755b37fdfb4caa984e612">ADC</a>;
+<a name="l00046"></a>00046 
+<a name="l00047"></a>00047 <span class="keywordtype">void</span> <a class="code" href="_a_d_c_8h.html#a0cbbe5f2546fcf9be2e3687d69d8d009">setSamplesForNormalizing</a>(<span class="keywordtype">int</span> samples);
+<a name="l00048"></a>00048 <span class="keywordtype">int</span> <a class="code" href="_a_d_c_8h.html#aa9491c6e48d2a9dd5c78ae5b13ed9339">getSamplesForNormalizing</a>();
+<a name="l00049"></a>00049 
+<a name="l00054"></a>00054 <span class="keywordtype">void</span> <a class="code" href="_a_d_c_8h.html#a666f402aeb25c3e1bdd52587d442d5ba">normalizeADCValues</a>(<a class="code" href="struct_a_d_c.html">ADC</a> &amp;<a class="code" href="_i_m_u_8xc.html#a9b9a4a16a4bc2883f5fcb98cabc2b34b">adc</a>);
+<a name="l00055"></a>00055 
+<a name="l00064"></a>00064 <span class="keywordtype">void</span> <a class="code" href="_a_d_c_8h.html#abc5294f0941ed525182cd2f532812272">configureADC</a>(<a class="code" href="struct_a_d_c.html">ADC</a> &amp;<a class="code" href="_i_m_u_8xc.html#a9b9a4a16a4bc2883f5fcb98cabc2b34b">adc</a>);
+<a name="l00065"></a>00065 
+<a name="l00071"></a>00071 <span class="keywordtype">void</span> <a class="code" href="_a_d_c_8h.html#a221ba7afd0d0802886d1796ede1092a1">updateADCValues</a>(<a class="code" href="struct_a_d_c.html">ADC</a> &amp;<a class="code" href="_i_m_u_8xc.html#a9b9a4a16a4bc2883f5fcb98cabc2b34b">adc</a>);
+<a name="l00072"></a>00072 
+<a name="l00073"></a>00073 <span class="preprocessor">#endif </span><span class="comment">/* ADC_H_ */</span>
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->
@@ -136,7 +154,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul>
       <li class="navelem"><a class="el" href="_a_d_c_8h.html">ADC.h</a>      </li>
 
-    <li class="footer">Generated on Fri May 25 2012 14:55:17 for XMOS IMU by
+    <li class="footer">Generated on Wed May 30 2012 23:36:47 for XMOS IMU by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>
