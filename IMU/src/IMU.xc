@@ -130,7 +130,7 @@ gps		<: ((unsigned char) REQUEST_ALL);
 }
 
 void testADC() {
-	int adcValues[8], gRoll, gPitch, gYaw;
+	int adcValues[8], gRoll, gPitch, gYaw, aRoll, aPitch;
 	timer t;
 	long time;
 
@@ -147,13 +147,14 @@ void testADC() {
 		t :> time;
 		gYaw = getGYaw(adc.adcValues[GYRO_Z], time);
 
+		aRoll = getARoll(adc.rawAdcValues[ACCEL_Y] - Y_OFFSET, adc.rawAdcValues[ACCEL_Z] - Z_OFFSET);
+		aPitch = getAPitch(adc.rawAdcValues[ACCEL_X] - X_OFFSET, adc.rawAdcValues[ACCEL_Y] - Y_OFFSET, adc.rawAdcValues[ACCEL_Z] - Z_OFFSET);
+
 		if (PRINT_ADC) {
-			printf("ADC:\t%i\t%i\t%i\t%i\t%i\t%i\t\tA_Roll: %i \tA_Pitch: %i \tG_Roll: %i \tG_Pitch: %i \tG_Yaw: %i\n",
+			printf("ADC:\t%i\t%i\t%i\t%i\t%i\t%i\tA_Roll: %i \tA_Pitch: %i \tG_Roll: %i \tG_Pitch: %i \tG_Yaw: %i\n",
 					adc.adcValues[ACCEL_X], adc.adcValues[ACCEL_Y], adc.adcValues[ACCEL_Z],
 					getDegreesSecond(adc.adcValues[GYRO_X]), getDegreesSecond(adc.adcValues[GYRO_Y]), getDegreesSecond(adc.adcValues[GYRO_Z]),
-					getARoll(adc.rawAdcValues[ACCEL_Y] - Y_OFFSET, adc.rawAdcValues[ACCEL_Z] - Z_OFFSET),
-					getAPitch(adc.rawAdcValues[ACCEL_X] - X_OFFSET, adc.rawAdcValues[ACCEL_Y] - Y_OFFSET, adc.rawAdcValues[ACCEL_Z] - Z_OFFSET),
-					gRoll, gPitch, gYaw);
+					aRoll,aPitch, gRoll, gPitch, gYaw);
 
 		}
 	}
