@@ -8,8 +8,8 @@
  * @section Description
  */
 
-#ifndef ADC_FUNCS_H_
-#define ADC_FUNCS_H_
+#ifndef FILTER_H_
+#define FILTER_H_
 
 #ifdef __XC__
 #define EXTERNAL extern
@@ -17,11 +17,10 @@
 #define EXTERNAL extern "C"
 #endif
 
-float getGRoll(int rateCounts, long time);
-float getGPitch(int rateCounts, long time);
-float getGYaw(int rateCounts, long time);
-float getDegreesSecond(int rateCounts);
-float getARoll(int y, int z);
-float getAPitch(int x, int y, int z);
-
-#endif /* ADC_FUNCS_H_ */
+EXTERNAL void initFilter();
+EXTERNAL void updateFilterADCValues(int vals[8]);
+EXTERNAL void updateFilterMagValues(short vals[3]);
+EXTERNAL void runFilter(long time);
+EXTERNAL void printVariance(int sum, int sum2, int n);
+EXTERNAL void getRPY(int rpy[3]);
+#endif /* FILTER_H_ */

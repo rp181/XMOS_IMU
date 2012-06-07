@@ -14,11 +14,11 @@
 
 int samplesForNormalize = 5000;
 
-void setSamplesForNormalizing(int samples){
+void setSamplesForNormalizing(int samples) {
 	samplesForNormalize = samples;
 }
 
-int getSamplesForNormalizing(){
+int getSamplesForNormalizing() {
 	return samplesForNormalize;
 }
 
@@ -28,7 +28,7 @@ int getSamplesForNormalizing(){
  */
 void normalizeADCValues(ADC &adc) {
 	int localSamplesForNormalize = samplesForNormalize;
-	int localOffsets[8] = {0,0,0,0,0,0,0,0};
+	int localOffsets[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
 	timer t;
 	long time;
 
@@ -38,7 +38,7 @@ void normalizeADCValues(ADC &adc) {
 			localOffsets[d] += adc.adcValues[d];
 		}
 
-		t :> time;
+t		:> time;
 		time += 1000;
 		t when timerafter(time) :> void;
 	}
@@ -94,8 +94,18 @@ adc		.CS <: 0;
 		//Obtain the data values
 		adc.rawAdcValues[address1] = ((data1 & 8191) >> 1);
 		adc.rawAdcValues[address2] = ((data2 & 8191) >> 1);
-		adc.adcValues[address1] = adc.rawAdcValues[address1] - adc.offsets[address1];
-		adc.adcValues[address2] = adc.rawAdcValues[address2] - adc.offsets[address2];
+		if(address1 < 3) {
+			adc.adcValues[address1] = adc.rawAdcValues[address1] - adc.offsets[address1];
+		}
+		else {
+			adc.adcValues[address1] = adc.rawAdcValues[address1];
+		}
+		if(address2 < 3) {
+			adc.adcValues[address2] = adc.rawAdcValues[address2] - adc.offsets[address2];
+		}
+		else {
+			adc.adcValues[address2] = adc.rawAdcValues[address2];
+		}
 	}
 }
 
@@ -115,10 +125,12 @@ void configureADC(ADC &adc) {
 	configure_out_port(adc.SCLK, adc.blk1, 0);
 	configure_clock_src(adc.blk2, adc.SCLK);
 	configure_in_port(adc.MISO, adc.blk2);
-	clearbuf(adc.SCLK);
-	start_clock(adc.blk1);
-	start_clock(adc.blk2);
-	adc.SCLK <: 0xFF;
+	clearbuf(adc.SCLK)
+	;
+	start_clock(adc.blk1)
+	;
+	start_clock(adc.blk2)
+;	adc.SCLK <: 0xFF;
 
 	adc.CS <: 1;
 	adc.MOSI <: 1;

@@ -12,6 +12,7 @@ extern "C" {
 #include "ADC_Funcs.h"
 }
 #include <math.h>
+#include "../Libs/Math/MathUtils.h"
 
 #define PI 3.141592653
 #define COUNTS_DEGREE 20.5
@@ -25,11 +26,11 @@ long rTime = 0, pTime = 0, yTime = 0;
  * @param time
  * @return
  */
-int getGRoll(int rateCounts, long time){
+float getGRoll(int rateCounts, long time){
 	float rate = rateCounts/COUNTS_DEGREE;
 	gRoll += rate * ((time-rTime)*.00000001);
 	rTime = time;
-	return ((int) gRoll);
+	return (gRoll);
 }
 
 /**
@@ -38,11 +39,11 @@ int getGRoll(int rateCounts, long time){
  * @param time
  * @return
  */
-int getGPitch(int rateCounts, long time){
+float getGPitch(int rateCounts, long time){
 	float rate = rateCounts/COUNTS_DEGREE;
 	gPitch += rate * ((time-pTime)*.00000001);
 	pTime = time;
-	return ((int) gPitch);
+	return (gPitch);
 }
 
 /**
@@ -51,20 +52,20 @@ int getGPitch(int rateCounts, long time){
  * @param time
  * @return
  */
-int getGYaw(int rateCounts, long time){
+float getGYaw(int rateCounts, long time){
 	float rate = rateCounts/COUNTS_DEGREE;
 	gYaw += rate * ((time-yTime)*.00000001);
 	yTime = time;
-	return ((int) gYaw);
+	return (gYaw);
 }
 /**
  * Returns degrees/second from a gyro offsetted ADC value
  * @param rateCounts
  * @return
  */
-int getDegreesSecond(int rateCounts){
+float getDegreesSecond(int rateCounts){
 	float degrees = rateCounts/COUNTS_DEGREE;
-	return ((int) degrees);
+	return (degrees);
 }
 
 /**
@@ -73,12 +74,12 @@ int getDegreesSecond(int rateCounts){
  * @param z Offsetted z acceleration
  * @return Roll in degrees
  */
-int getARoll(int y, int z) {
+float getARoll(int y, int z) {
 	float rY = y;
 	float rZ = z;
 
 	float roll = atan2(y, z) * (float) 180 / PI;
-	return ((int) roll);
+	return (roll);
 }
 
 /**
@@ -88,11 +89,13 @@ int getARoll(int y, int z) {
  * @param z Offsetted Z acceleration
  * @return Pitch in degrees
  */
-int getAPitch(int x, int y, int z) {
+float getAPitch(int x, int y, int z) {
 	float rX = x;
 	float rY = y;
 	float rZ = z;
 
 	float pitch = atan2(x, sqrt(y * y + z * z)) * (float) 180 / PI;
-	return ((int) pitch);
+	return (pitch);
 }
+
+

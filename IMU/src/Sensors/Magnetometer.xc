@@ -48,18 +48,18 @@ void setMagnetometerGain(char gain, REFERENCE_PARAM(struct r_i2c,i2c)){
  * @param i2c the i2c lines the magnetometer is on
  */
 void readMagnetometer(short values[], REFERENCE_PARAM(struct r_i2c,i2c)) {
-	i2c_master_read_reg(ADDRESS_7, 0x03, singleData, 1, i2c);
+	i2c_master_read_reg(ADDRESS_7, ADDRESS_XA, singleData, 1, i2c);
 	data[0] = singleData[0];
-	i2c_master_read_reg(ADDRESS_7, 0x04, singleData, 1, i2c);
+	i2c_master_read_reg(ADDRESS_7, ADDRESS_XB, singleData, 1, i2c);
 	data[1] = singleData[0];
-	i2c_master_read_reg(ADDRESS_7, 0x05, singleData, 1, i2c);
+	i2c_master_read_reg(ADDRESS_7, ADDRESS_YA, singleData, 1, i2c);
 	data[2] = singleData[0];
-	i2c_master_read_reg(ADDRESS_7, 0x06, singleData, 1, i2c);
+	i2c_master_read_reg(ADDRESS_7, ADDRESS_YB, singleData, 1, i2c);
 	data[3] = singleData[0];
-	i2c_master_read_reg(ADDRESS_7, 0x07, singleData, 1, i2c);
+	i2c_master_read_reg(ADDRESS_7, ADDRESS_ZA, singleData, 1, i2c);
 	data[4] = singleData[0];
-	i2c_master_read_reg(ADDRESS_7, 0x08, singleData, 1, i2c);
-	data[5] = singleData[0];
+	i2c_master_read_reg(ADDRESS_7, ADDRESS_ZB, singleData, 1, i2c);
+	data[5] = singleData [0];
 
 	values[0] = ((((int) data[0]) << 8) + ((int) data[1]));
 	values[1] = ((((int) data[2]) << 8) + ((int) data[3]));
